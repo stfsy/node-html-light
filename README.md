@@ -14,14 +14,27 @@ Wrapper around htmlparser2 providing a more object oriented interface
 ## Example
 
 ```js
+const Document = require('node-html-light').Document
+const path = require('path').resolve
+
+Document.fromPath(resolve('index.html')).then((document) => {
+    const head = document.head()
+    const body = document.body()
+
+    // find child elements
+    // append child elements
+    // remove child elements
+    // replace child elements
+
+    return document.toHtml()
+}).then((html) => {
+    // ..
+})
 
 ```
 
 ## Installation
 
 ```js
-npm install node-html-light
+npm install node-html-light --save
 ```
-
-##Documentation
-
