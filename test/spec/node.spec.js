@@ -18,6 +18,17 @@ describe('Node', () => {
         expect(node.length).to.equal(undefined)
     })
 
+    it('should contain a head with 4 meta child elements', (done) => {
+        Node.fromPath(resolve('test/withMeta.html')).then((node) => {
+            const metas = node.find('meta')
+
+            expect(metas[0].attribute('name').value).to.equal(undefined)
+            expect(metas[1].attribute('name').value).to.equal('description')
+            expect(metas[2].attribute('name').value).to.equal('viewport')
+            expect(metas[3].attribute('name').value).to.equal('theme-color')
+        }).then(done, done)
+    })
+
     it('should return a single node', () => {
         const string = '<div><p></p><span></span><p></p></div>'
 
