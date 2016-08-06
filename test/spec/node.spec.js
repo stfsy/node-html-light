@@ -2,6 +2,7 @@
 
 const Node = require('../../lib/node')
 const Attr = require('../../lib/attribute')
+const Text = require('../../lib/text')
 
 const htmlParser = require('htmlparser2')
 const expect = require('chai').expect
@@ -306,5 +307,14 @@ describe('Node', () => {
         expect(node.attributes()[1].key).to.equal('name')
         expect(node.attributes()[2].key).to.equal('id')
         expect(node.attributes()[3].key).to.equal('abc')
+    })
+
+    it('should append a text node', () => {
+
+        const node = Node.fromString('<div></div>').appendChild(Text.fromString('eins')).appendChild(Text.fromString('deux'))
+
+        expect(node.get().children.length).to.equal(2)
+        expect(node.get().children[0].data).to.equal('eins')
+        expect(node.get().children[1].data).to.equal('deux')
     })
 })
