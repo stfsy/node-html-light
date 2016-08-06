@@ -54,7 +54,7 @@ describe('Node', () => {
     })
 
     it('should have the correct tag name', () => {
-        const node = Node.of('meta')
+        const node = Node.create('meta')
 
         expect(node.get().name).to.equal('meta')
         expect(node.get().type).to.equal('tag')
@@ -69,7 +69,7 @@ describe('Node', () => {
     })
 
     it('should have the correct tag name and type', () => {
-        const node = Node.of('script')
+        const node = Node.create('script')
 
         expect(node.get().name).to.equal('script')
         expect(node.get().type).to.equal('script')
@@ -310,11 +310,18 @@ describe('Node', () => {
     })
 
     it('should append a text node', () => {
-
         const node = Node.fromString('<div></div>').appendChild(Text.fromString('eins')).appendChild(Text.fromString('deux'))
 
         expect(node.get().children.length).to.equal(2)
         expect(node.get().children[0].data).to.equal('eins')
         expect(node.get().children[1].data).to.equal('deux')
+    })
+
+    it('should return html', () => {
+
+        const node = Node.fromString('<div></div>')
+        const html = node.toHtml()
+
+        expect(html).to.equal('<div></div>')
     })
 })
