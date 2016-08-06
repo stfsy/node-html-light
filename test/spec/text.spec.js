@@ -22,8 +22,6 @@ describe('Text', () => {
 
         for(let key in parsed) {
 
-            console.log(key, parsed[key])
-
             expect(textNode[key]).to.equal(parsed[key])
         } 
     })
