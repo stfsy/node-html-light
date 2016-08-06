@@ -19,4 +19,9 @@ describe('HtmlManipulate', () => {
 
         expect(typeof htmlManipulate.Attr).to.equal('function')
     })
+
+    it('should contain the text class', () => {
+
+        expect(typeof htmlManipulate.Text).to.equal('function')
+    })
 })
