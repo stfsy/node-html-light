@@ -1,3 +1,25 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/stfsy/node-html-light/compare/v0.2.0...v0.3.0) (2016-08-06)
+
+
+### Code Refactoring
+
+* **node.js:** rename factory method ([5fdf701](https://github.com/stfsy/node-html-light/commit/5fdf701))
+
+
+### Features
+
+* **document.js:** add getter for html tag ([9996bb6](https://github.com/stfsy/node-html-light/commit/9996bb6))
+* **node.js:** read nodes from a given path ([45ef182](https://github.com/stfsy/node-html-light/commit/45ef182))
+* **node.js:** set attributes on nodes if param is an attribute ([485e241](https://github.com/stfsy/node-html-light/commit/485e241))
+
+
+### BREAKING CHANGES
+
+* node.js: use Node.create now instead of Node.of
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/stfsy/node-html-light/compare/v0.1.0...v0.2.0) (2016-08-06)
 
