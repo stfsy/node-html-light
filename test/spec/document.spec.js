@@ -47,6 +47,14 @@ describe('Document', () => {
         }).then(done, done)
     })
 
+    it('should contain a html node with 4 child elements', (done) => {
+        Document.fromPath(resolve('test/withBody.html')).then((document) => {
+            const body = document.html()
+
+            expect(body.name()).to.equal('html')
+        }).then(done, done)
+    })
+
     it('should remove children of the head node', (done) => {
         Document.fromPath(resolve('test/withMeta.html')).then((document) => {
             const head = document.head().get()
