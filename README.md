@@ -11,7 +11,8 @@
 
 Wrapper around htmlparser2 providing a more object oriented interface
 
-## Example
+## Examples
+### Creating a document using a file
 
 ```js
 const Document = require('node-html-light').Document
@@ -30,9 +31,44 @@ Document.fromPath(resolve('index.html')).then((document) => {
 }).then((html) => {
     // ..
 })
-
 ```
 
+### Creating a Node using a File
+```js
+const Node = require('node-html-light').Node
+const resolve = require('path').resolve
+
+Node.fromPath(resolve('partial.html')).then((node) => {})
+```
+### Creating a Node using a String
+```js
+const Node = require('node-html-light').Node
+const resolve = require('path').resolve
+
+const node = Node.fromString('<div></div>')
+```
+### Creating a raw Node
+```js
+const Node = require('node-html-light').Node
+const resolve = require('path').resolve
+
+const node = Node.create('meta', [
+    new Attribute('name', 'viewport'),
+    new Attribute('theme-color', '#795548')
+])
+```
+### Finding a child Node
+```js
+const Node = require('node-html-light').Node
+const Attr = require('node-html-light').Attribute
+const resolve = require('path').resolve
+
+Node.fromPath(resolve('partial.html')).then((node) => {
+    const content = node.find('div', [
+        new Attribute('id', 'content')
+    ])
+})
+```
 ## Installation
 
 ```js
