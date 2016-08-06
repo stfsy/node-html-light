@@ -335,4 +335,12 @@ describe('Node', () => {
 
         expect(html).to.equal('<div></div>')
     })
+
+    it('should add a attribute', () => {
+
+        const node = Node.fromString('<div></div>')
+        node.attribute(new Attr('id', 'content'))
+
+        expect(node.attribute('id').value).to.equal('content')
+    })
 })
