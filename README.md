@@ -50,6 +50,7 @@ const node = Node.fromString('<div></div>')
 ### Creating a raw Node
 ```js
 const Node = require('node-html-light').Node
+const Attribute = require('node-html-light').Attribute
 const resolve = require('path').resolve
 
 const node = Node.create('meta', [
@@ -60,7 +61,7 @@ const node = Node.create('meta', [
 ### Finding a child Node
 ```js
 const Node = require('node-html-light').Node
-const Attr = require('node-html-light').Attribute
+const Attribute = require('node-html-light').Attribute
 const resolve = require('path').resolve
 
 Node.fromPath(resolve('partial.html')).then((node) => {
