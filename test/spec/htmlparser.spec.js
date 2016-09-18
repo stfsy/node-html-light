@@ -66,4 +66,23 @@ describe('HtmlParser', () => {
         expect(parsed.data).to.equal('ABCDEFGH')
         expect(parsed.type).to.equal('text')
     })
+
+    it('should parse comments', () => {
+
+        const parsed = htmlParser.parseDOM(`<div>
+          <!-- @amy import a.html with a.b.c.d -->
+          <!-- @amy import b.html forEach a.b.c.e -->
+        </div>`)
+
+        expect(parsed[0].children[1].type).to.equal('comment')
+        expect(parsed[0].children[1].data).to.equal(' @amy import a.html with a.b.c.d ')
+        expect(parsed[0].children[3].type).to.equal('comment')
+        expect(parsed[0].children[3].data).to.equal(' @amy import b.html forEach a.b.c.e ')
+    })
+
+    it('should parse text', () => {
+        const parsed = htmlParser.parseDOM(`Hello`)
+
+        expect(parsed[0].type).to.equal('text')
+    })
 })
