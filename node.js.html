@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>node.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="node-html-light.Attribute.html">Attribute</a></li><li><a href="node-html-light.Document.html">Document</a><ul class='methods'><li data-type='method'><a href="node-html-light.Document.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Document.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Document.html#body">body</a></li><li data-type='method'><a href="node-html-light.Document.html#head">head</a></li><li data-type='method'><a href="node-html-light.Document.html#html">html</a></li></ul></li><li><a href="node-html-light.Node.html">Node</a><ul class='methods'><li data-type='method'><a href="node-html-light.Node.html#.create">create</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChild">appendChild</a></li><li data-type='method'><a href="node-html-light.Node.html#attribute">attribute</a></li><li data-type='method'><a href="node-html-light.Node.html#attributes">attributes</a></li><li data-type='method'><a href="node-html-light.Node.html#find">find</a></li><li data-type='method'><a href="node-html-light.Node.html#name">name</a></li><li data-type='method'><a href="node-html-light.Node.html#removeAll">removeAll</a></li><li data-type='method'><a href="node-html-light.Node.html#removeFirst">removeFirst</a></li><li data-type='method'><a href="node-html-light.Node.html#replaceChild">replaceChild</a></li><li data-type='method'><a href="node-html-light.Node.html#toHtml">toHtml</a></li></ul></li><li><a href="node-html-light.Text.html">Text</a><ul class='methods'><li data-type='method'><a href="node-html-light.Text.html#.fromString">fromString</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="node-html-light.html">node-html-light</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">node.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict'
+
+const Attribute = require('./attribute')
+
+const htmlParser = require('htmlparser2')
+const domUtils = htmlParser.DomUtils
+const fs = require('fs-promise')
+
+/**
+ * @class
+ * @memberof node-html-light
+ */
+class Node {
+
+    /** */
+    static get TYPE_COMMENT() {
+        return 'comment'
+    }
+    /** */
+    static get TYPE_TAG() {
+        return 'tag'
+    }
+    /** */
+    static get TYPE_TEXT() {
+        return 'text'
+    }
+
+    /**
+    * Creates a new document of a files contents
+    * @param {string} path path to a file
+    * @returns {Node} a new document
+    */
+    static fromPath(path) {
+        return fs.readFile(path, { encoding: 'utf-8' }).then((contents) => {
+            return Node.fromString(contents)
+        })
+    }
+
+    /**
+     * Parses a html string into a node object
+     * @param {string} string a html string
+     * @returns {Node} a new Node
+     */
+    static fromString(string) {
+
+        const parsed = htmlParser.parseDOM(string)
+
+        if (parsed.length > 1) {
+
+            return parsed.map(string => new Node(string))
+        } else if (parsed.length === 1) {
+
+            return new Node(parsed[0])
+        }
+
+        return new Node(parsed)
+    }
+
+    /**
+     * Creates a new Node with name and attributes
+     * @param {string} tag the nodes name
+     * @param {Array.&lt;Attribute>} [attrs=empty] attrs an array of attributes
+     * @returns {Node} a new Node
+     */
+    static create(tag, attrs) {
+        const node = {
+            name: tag,
+            children: [],
+            attribs: {}
+        }
+
+        switch (tag) {
+            case 'script': {
+                node.type = 'script'
+                break
+            }
+
+            default: {
+                node.type = 'tag'
+                break
+            }
+        }
+
+        return new Node(node, attrs)
+    }
+
+    /**
+     * @constructor
+     * @private
+     * @description &lt;b>Do not use this method directly. Use one of the static helper methods instead.&lt;/b>
+     * @param {Object} elem object containing the nodes properties
+     * @param {Array&lt;Attribute>} [attrs=empty] attrs an array of attributes
+     * @returns {Node} a new Node
+     */
+    constructor(elem, attrs) {
+        this._element = elem
+
+        if (attrs) {
+            /* istanbul ignore else */
+            if (!this._element.attribs) {
+                this._element.attribs = {}
+            }
+
+            attrs.forEach((attr) => {
+                this._element.attribs[attr.key] = attr.value
+            })
+        }
+    }
+
+    /**
+     * Returns the raw representation of this node
+     * @private
+     * @deprecated
+     * @returns {Object} htmlparser2's representation of a html node
+     */
+    get() {
+
+        return this._element
+    }
+
+    /**
+     * Returns the name of this node
+     * @returns {string}
+     */
+    name() {
+
+        return this.get().name
+    }
+
+    /**
+      * Returns or sets the attribute for the given key and value
+      * @param {string|Attribute} attr a key for getting an attribute or an attribute for setting the attribute on this node
+      * @returns {Attribute}
+      */
+    attribute(attr) {
+        const attributes = this.get().attribs
+
+        if (typeof attr === 'string') {
+            return new Attribute(attr, attributes[attr])
+        } else if (typeof attr === 'object') {
+            attributes[attr.key] = attr.value
+        }
+
+        return new Attribute(attr.key, attr.value)
+    }
+
+    /**
+       * Returns all attributes of this node
+       * @returns {Array.&lt;Attribute>}
+       */
+    attributes() {
+        const attributes = this.get().attribs
+        const array = []
+
+        for (let key in attributes) {
+            array.push(new Attribute(key, attributes[key]))
+        }
+
+        return array
+    }
+
+    /**
+      * Returns an array of nodes matching tag name and attributes
+      * @param {Object} element an object whos properties reflect the properties of the element we are looking for
+      * @param {Array&lt;Attribute>} [attrs=empty] attrs an array of attributes
+      * @param {Number} [limit=Infinity] limit the max number of results
+      * @returns {Array&lt;Node>}
+      */
+    find(element, attrs, limit) {
+
+        if (typeof element === 'string') {
+            const name = element
+
+            element = {
+                type: 'tag',
+                name: name
+            }
+        }
+
+        const elements = domUtils.filter((el) => {
+            let found = true
+
+            found = Object.keys(element).every((key) => el[key] === element[key])
+
+            if (found &amp;&amp; attrs) {
+                found = attrs.find((attr) => {
+                    return el.attribs[attr.key] === attr.value
+                })
+            }
+
+            return found
+        }, this._element, true, limit)
+
+        return elements.map((el) => new Node(el))
+    }
+
+    /**
+      * Removes the first child node with matching tag name and attributes
+      * @param {string} tag the tag to look for
+      * @param {Array&lt;Attribute>} [attrs=empty] attrs an array of attributes
+      * @returns {this}
+      */
+    removeFirst(tag, attrs) {
+        const elements = domUtils.filter((element) => {
+
+            let found = true
+
+            if (attrs) {
+                found = attrs.find((attr) => {
+                    return element.attribs[attr.key] === attr.value
+                })
+            }
+
+            return found &amp;&amp; element.name === tag
+        }, this._element, true, 1)
+
+        domUtils.removeElement(elements[0])
+
+        return this
+    }
+
+    /**
+      * Removes all child nodes with matching tag name and attributes
+      * @param {string} tag the tag to look for
+      * @param {Array&lt;Attribute>} [attrs=empty] attrs an array of attributes
+      * @returns {this}
+      */
+    removeAll(tag, attrs) {
+        const elements = domUtils.filter((element) => {
+
+            let found = true
+
+            if (attrs) {
+                found = attrs.find((attr) => {
+                    return element.attribs[attr.key] === attr.value
+                })
+            }
+
+            return found &amp;&amp; element.name === tag
+        }, this._element, true)
+
+        elements.forEach((element) => {
+            domUtils.removeElement(element)
+        })
+
+        return this
+    }
+
+    /**
+      * Appends a node to this node's children
+      * @param {Node} node the node to be appended
+      * @returns {this}
+      */
+    appendChild(node) {
+        domUtils.appendChild(this._element, node.get())
+
+        return this
+    }
+
+    /**
+      * Replaces a child element with a new child
+      * @param {Node} newChild the new Child
+      * @param {Node} oldChild the old Child to be replaced
+      * @returns {this}
+      */
+    replaceChild(newChild, oldChild) {
+        domUtils.replaceElement(oldChild.get(), newChild.get())
+
+        return this
+    }
+
+    /**
+    * Returns the stringified version of this document
+    * @returns {string} 
+    */
+    toHtml() {
+
+        return domUtils.getOuterHTML(this._element)
+    }
+}
+
+module.exports = Node</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.1</a> using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
