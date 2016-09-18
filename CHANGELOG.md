@@ -1,3 +1,14 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/stfsy/node-html-light/compare/v0.3.0...v0.4.0) (2016-09-18)
+
+
+### Features
+
+* **node.js:** allow finding nodes of type text and comment ([4dc5823](https://github.com/stfsy/node-html-light/commit/4dc5823))
+* **node.js:** expose node types ([c908de6](https://github.com/stfsy/node-html-light/commit/c908de6))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/stfsy/node-html-light/compare/v0.2.0...v0.3.0) (2016-08-06)
 
