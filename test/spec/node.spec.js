@@ -217,6 +217,47 @@ describe('Node', () => {
         expect(nodes.length).to.equal(3)
     })
 
+    it('should find a comment tag', () => {
+        const parsed = htmlParser.parseDOM([
+            '<div>',
+            '<!-- @amy import a.html with a.b.c.d -->',
+            '<!-- @amy import b.html forEach a.b.c.e -->',
+            '</div>'
+        ].join(''))
+
+        const nodes = new Node(parsed).find({ type: 'comment' })
+
+        expect(nodes.length).to.equal(2)
+    })
+
+    it('should find a comment tag', () => {
+        const parsed = htmlParser.parseDOM([
+            '<div>',
+            '<h1>i am a h1 tag</h1>',
+            '<h3>i am a h3 tag</h3>',
+            '<!-- @amy import a.html with a.b.c.d -->',
+            '<!-- @amy import b.html forEach a.b.c.e -->',
+            '</div>'
+        ].join(''))
+
+        const nodes = new Node(parsed).find({ type: 'comment' })
+
+        expect(nodes.length).to.equal(2)
+    })
+
+        it('should return an empty array of nodes', () => {
+        const parsed = htmlParser.parseDOM([
+            '<div>',
+            '<h1>i am a h1 tag</h1>',
+            '<h3>i am a h3 tag</h3>',
+            '</div>'
+        ].join(''))
+
+        const nodes = new Node(parsed).find({ type: 'comment' })
+
+        expect(nodes.length).to.equal(0)
+    })
+
     it('should contain three meta tags', () => {
         const string = [
             '<head>',
