@@ -20,7 +20,7 @@ describe('Node', () => {
 
     it('should contain a head with 4 meta child elements', (done) => {
         Node.fromPath(resolve('test/withMeta.html')).then((node) => {
-            const metas = node.find('meta')
+            const metas = node.find({name: 'meta', type: Node.TYPE_TAG})
 
             expect(metas[0].attribute('name').value).to.equal(undefined)
             expect(metas[1].attribute('name').value).to.equal('description')
@@ -225,7 +225,7 @@ describe('Node', () => {
             '</div>'
         ].join(''))
 
-        const nodes = new Node(parsed).find({ type: 'comment' })
+        const nodes = new Node(parsed).find({ type: Node.TYPE_COMMENT })
 
         expect(nodes.length).to.equal(2)
     })
@@ -245,7 +245,7 @@ describe('Node', () => {
         expect(nodes.length).to.equal(2)
     })
 
-        it('should return an empty array of nodes', () => {
+    it('should return an empty array of nodes', () => {
         const parsed = htmlParser.parseDOM([
             '<div>',
             '<h1>i am a h1 tag</h1>',
@@ -367,6 +367,7 @@ describe('Node', () => {
         expect(node.get().children.length).to.equal(2)
         expect(node.get().children[0].data).to.equal('eins')
         expect(node.get().children[1].data).to.equal('deux')
+        expect(node.get().children[1].type).to.equal(Node.TYPE_TEXT)
     })
 
     it('should return html', () => {
@@ -383,5 +384,28 @@ describe('Node', () => {
         node.attribute(new Attr('id', 'content'))
 
         expect(node.attribute('id').value).to.equal('content')
+    })
+
+    it('should find a comment node', () => {
+
+    })
+
+    it('should find a node', () => {
+
+        const parsed = htmlParser.parseDOM([
+            '<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join(''))
+
+        const node = new Node(parsed).find({name: 'meta', type: Node.TYPE_TAG}, [
+            new Attr('name', 'viewport')
+        ])[0]
+
+        expect(node.get().name).to.equal('meta')
+        expect(node.get().attribs.name).to.equal('viewport')
     })
 })
