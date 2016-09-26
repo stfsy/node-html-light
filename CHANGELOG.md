@@ -1,3 +1,13 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/stfsy/node-html-light/compare/v0.4.0...v0.5.0) (2016-09-26)
+
+
+### Features
+
+* **node.js:** add appendChildBefore and appendChildAfter methods ([4a5dd83](https://github.com/stfsy/node-html-light/commit/4a5dd83))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/stfsy/node-html-light/compare/v0.3.0...v0.4.0) (2016-09-18)
 
