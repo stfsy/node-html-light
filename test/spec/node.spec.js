@@ -401,11 +401,47 @@ describe('Node', () => {
             '</head>'
         ].join(''))
 
-        const node = new Node(parsed).find({name: 'meta', type: Node.TYPE_TAG}, [
+        const node = new Node(parsed).find({ name: 'meta', type: Node.TYPE_TAG }, [
             new Attr('name', 'viewport')
         ])[0]
 
         expect(node.get().name).to.equal('meta')
         expect(node.get().attribs.name).to.equal('viewport')
+    })
+
+    it('should append a new element after a given current element', (done) => {
+        Node.fromPath(resolve('test/withMeta.html')).then((node) => {
+            let metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
+            const descriptionMeta = metas[1]
+
+            node.appendChildAfter(Node.fromString('<meta name="author" content="Hmmpft">'), descriptionMeta)
+
+            metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
+
+            expect(metas.length).to.equal(5)
+            expect(metas[0].attribute('name').value).to.equal(undefined)
+            expect(metas[1].attribute('name').value).to.equal('description')
+            expect(metas[2].attribute('name').value).to.equal('author')
+            expect(metas[3].attribute('name').value).to.equal('viewport')
+            expect(metas[4].attribute('name').value).to.equal('theme-color')
+        }).then(done, done)
+    })
+
+    it('should prepend a new element before a given current element', (done) => {
+        Node.fromPath(resolve('test/withMeta.html')).then((node) => {
+            let metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
+            const descriptionMeta = metas[1]
+
+            node.appendChildBefore(Node.fromString('<meta name="author" content="Hmmpft">'), descriptionMeta)
+
+            metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
+
+            expect(metas.length).to.equal(5)
+            expect(metas[0].attribute('name').value).to.equal(undefined)
+            expect(metas[1].attribute('name').value).to.equal('author')
+            expect(metas[2].attribute('name').value).to.equal('description')
+            expect(metas[3].attribute('name').value).to.equal('viewport')
+            expect(metas[4].attribute('name').value).to.equal('theme-color')
+        }).then(done, done)
     })
 })
