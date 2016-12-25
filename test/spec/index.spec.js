@@ -15,6 +15,11 @@ describe('HtmlManipulate', () => {
         expect(typeof htmlManipulate.Node).to.equal('function')
     })
 
+    it('should contain the nodes class', () => {
+
+        expect(typeof htmlManipulate.Nodes).to.equal('function')
+    })
+
     it('should contain the attribute class', () => {
 
         expect(typeof htmlManipulate.Attr).to.equal('function')
