@@ -1,3 +1,15 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/stfsy/node-html-light/compare/v0.4.0...v0.6.0) (2017-01-11)
+
+
+### Features
+
+* **node.js:** add append method ([1850902](https://github.com/stfsy/node-html-light/commit/1850902))
+* **node.js:** add appendChildBefore and appendChildAfter methods ([4a5dd83](https://github.com/stfsy/node-html-light/commit/4a5dd83))
+* **nodes.js:** add nodes class and proxy node's find method ([948998f](https://github.com/stfsy/node-html-light/commit/948998f))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/stfsy/node-html-light/compare/v0.4.0...v0.5.0) (2016-09-26)
 
