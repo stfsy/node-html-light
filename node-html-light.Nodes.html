@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Document - Documentation</title>
+    <title>Nodes - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,7 +28,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Document</h1>
+    <h1 class="page-title">Nodes</h1>
     
 
     
@@ -43,7 +43,7 @@
         <h2>
             <span class="ancestors"><a href="node-html-light.html">node-html-light</a>.</span>
         
-        Document
+        Nodes
         </h2>
         
     
@@ -56,7 +56,7 @@
 
     
 
-    <h4 class="name" id="Document"><span class="type-signature"></span>new Document<span class="signature">(elem)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Nodes"><span class="type-signature"></span>new Nodes<span class="signature">(elems)</span><span class="type-signature"></span></h4>
 
     
 
@@ -99,13 +99,13 @@
 
         <tr>
             
-                <td class="name"><code>elem</code></td>
+                <td class="name"><code>elems</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">Array.&lt;Node></span>
 
 
             
@@ -115,7 +115,7 @@
 
             
 
-            <td class="description last">object containing the nodes properties</td>
+            <td class="description last">an array of nodes</td>
         </tr>
 
     
@@ -156,7 +156,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="document.js.html">document.js</a>, <a href="document.js.html#line14">line 14</a>
+        <a href="nodes.js.html">nodes.js</a>, <a href="nodes.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -186,17 +186,6 @@
     </div>
 
     
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>Node</li>
-    </ul>
-
-
-    
 
     
 
@@ -216,14 +205,14 @@
 
     
 
-    <h4 class="name" id=".fromPath"><span class="type-signature">(static) </span>fromPath<span class="signature">(path)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".fromArray"><span class="type-signature">(static) </span>fromArray<span class="signature">(elems)</span><span class="type-signature"> &rarr; {Node}</span></h4>
 
     
 
 
 
 <div class="description">
-    Creates a new document of a files contents
+    Wrap a set of Nodes to get access to utility functions
 </div>
 
 
@@ -259,13 +248,13 @@
 
         <tr>
             
-                <td class="name"><code>path</code></td>
+                <td class="name"><code>elems</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Array.&lt;Node></span>
 
 
             
@@ -275,7 +264,7 @@
 
             
 
-            <td class="description last">path to a file</td>
+            <td class="description last">an array of nodes</td>
         </tr>
 
     
@@ -316,7 +305,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="document.js.html">document.js</a>, <a href="document.js.html#line21">line 21</a>
+        <a href="nodes.js.html">nodes.js</a>, <a href="nodes.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -343,7 +332,7 @@
 
         
 <div class="param-desc">
-    a new promise that is resolved with the new document
+    a new Node
 </div>
 
 
@@ -354,7 +343,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise</span>
+<span class="param-type">Node</span>
 
 
     </dd>
@@ -369,14 +358,14 @@
 
     
 
-    <h4 class="name" id=".fromString"><span class="type-signature">(static) </span>fromString<span class="signature">(string)</span><span class="type-signature"> &rarr; {Document}</span></h4>
+    <h4 class="name" id="find"><span class="type-signature"></span>find<span class="signature">(element, attrs<span class="signature-attributes">opt</span>, limit<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;Node>}</span></h4>
 
     
 
 
 
 <div class="description">
-    Parses a html string into a document object
+    Returns an array of nodes matching tag name and attributes
 </div>
 
 
@@ -400,7 +389,11 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -412,23 +405,113 @@
 
         <tr>
             
-                <td class="name"><code>string</code></td>
+                <td class="name"><code>element</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">a html string</td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">an object whos properties reflect the properties of the element we are looking for</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Attribute></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    empty
+                
+                </td>
+            
+
+            <td class="description last">attrs an array of attributes</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>limit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    Infinity
+                
+                </td>
+            
+
+            <td class="description last">limit the max number of results</td>
         </tr>
 
     
@@ -469,111 +552,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="document.js.html">document.js</a>, <a href="document.js.html#line32">line 32</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    a new document
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Document</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="body"><span class="type-signature"></span>body<span class="signature">()</span><span class="type-signature"> &rarr; {Node}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Returns the body node of this document
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="document.js.html">document.js</a>, <a href="document.js.html#line67">line 67</a>
+        <a href="nodes.js.html">nodes.js</a>, <a href="nodes.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -607,207 +586,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Node</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="head"><span class="type-signature"></span>head<span class="signature">()</span><span class="type-signature"> &rarr; {Node}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Returns the head node of this document
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="document.js.html">document.js</a>, <a href="document.js.html#line59">line 59</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Node</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="html"><span class="type-signature"></span>html<span class="signature">()</span><span class="type-signature"> &rarr; {Node}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Returns the head node of this document
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="document.js.html">document.js</a>, <a href="document.js.html#line51">line 51</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Node</span>
+<span class="param-type">Array.&lt;Node></span>
 
 
     </dd>

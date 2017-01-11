@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>node-html-light - Documentation</title>
+    <title>nodes.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,117 +28,78 @@
 
 <div id="main">
     
-    <h1 class="page-title">node-html-light</h1>
+    <h1 class="page-title">nodes.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        node-html-light
-        </h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict'
 
-<article>
-    <div class="container-overview">
-    
-        
+/**
+ * @class
+ * @memberof node-html-light
+ */
+class Nodes {
 
-        
+    /**
+     * Wrap a set of Nodes to get access to utility functions
+     * @param {Array&lt;Node>} elems an array of nodes
+     * @returns {Node} a new Node
+     */
+    static fromArray(elems) {
+        return new Nodes(elems)
+    }
 
+    /**
+     * @constructor
+     * @private
+     * @description &lt;b>Do not use this method directly. Use one of the static helper methods instead.&lt;/b>
+     * @param {Array&lt;Node>} elems an array of nodes
+     * @returns {Nodes} a new object wrapping the given array of nodes
+     */
+    constructor(elems) {
+        this._elements = elems
+    }
 
-<dl class="details">
+    /**
+      * Returns an array of nodes matching tag name and attributes
+      * @param {Object} element an object whos properties reflect the properties of the element we are looking for
+      * @param {Array&lt;Attribute>} [attrs=empty] attrs an array of attributes
+      * @param {Number} [limit=Infinity] limit the max number of results
+      * @returns {Array&lt;Node>}
+      */
+    find(element, attrs, limit) {
+        let result = []
 
-    
+        if (limit === undefined || limit === null) {
+            limit = Infinity
+        }
 
-    
+        for (let i = 0, n = this._elements.length; i &lt; n; i++) {
+            const el = this._elements[i]
+            const foundElements = el.find(element, attrs, limit)
+            result = result.concat(foundElements)
+            const size = foundElements.length
 
-    
+            if (size >= limit) {
+                break
+            } else {
+                limit = limit - size
+            }
+        }
 
-    
+        return result
+    }
+}
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line9">line 9</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="node-html-light.Attribute.html">Attribute</a></dt>
-            <dd></dd>
-        
-            <dt><a href="node-html-light.Document.html">Document</a></dt>
-            <dd></dd>
-        
-            <dt><a href="node-html-light.Node.html">Node</a></dt>
-            <dd></dd>
-        
-            <dt><a href="node-html-light.Nodes.html">Nodes</a></dt>
-            <dd></dd>
-        
-            <dt><a href="node-html-light.Text.html">Text</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+module.exports = Nodes</code></pre>
+        </article>
+    </section>
 
 
 
