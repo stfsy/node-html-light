@@ -87,6 +87,18 @@ describe('HtmlParser', () => {
         expect(parsed[0].type).to.equal('text')
     })
 
+    it('should parse parametrized text nodes', () => {
+        const parsed = htmlParser.parseDOM(`{{ id }}`)
+
+        expect(parsed[0].type).to.equal('text')
+    })
+
+    it('should parse parametrized child text nodes', () => {
+        const parsed = htmlParser.parseDOM(`<div>{{ id }}</div>`)
+        expect(parsed[0].children[0].type).to.equal('text')
+    })
+
+
     it('should link child elements to parents', () => {
         const parsed = htmlParser.parseDOM(`<div>
           <!-- @amy import a.html with a.b.c.d -->
