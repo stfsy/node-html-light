@@ -20,7 +20,7 @@ describe('Node', () => {
 
     it('should contain a head with 4 meta child elements', (done) => {
         Node.fromPath(resolve('test/withMeta.html')).then((node) => {
-            const metas = node.find({name: 'meta', type: Node.TYPE_TAG})
+            const metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
 
             expect(metas[0].attribute('name').value).to.equal(undefined)
             expect(metas[1].attribute('name').value).to.equal('description')
@@ -69,6 +69,14 @@ describe('Node', () => {
 
         expect(node.get().name).to.equal('meta')
         expect(node.get().type).to.equal('tag')
+    })
+
+    it('should create div tag with a text child node', () => {
+        const parsed = htmlParser.parseDOM(`<div>{{ id }}</div>`)
+        const node = Node.create(parsed[0])
+        expect(node.name()).to.equal('div')
+        expect(node.get().children[0].data).to.equal('{{ id }}')
+        expect(node.get().children[0].type).to.equal('text')
     })
 
     it('should have the correct tag name and type', () => {
