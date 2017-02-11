@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="node-html-light.Attribute.html">Attribute</a></li><li><a href="node-html-light.Document.html">Document</a><ul class='methods'><li data-type='method'><a href="node-html-light.Document.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Document.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Document.html#body">body</a></li><li data-type='method'><a href="node-html-light.Document.html#head">head</a></li><li data-type='method'><a href="node-html-light.Document.html#html">html</a></li></ul></li><li><a href="node-html-light.Node.html">Node</a><ul class='methods'><li data-type='method'><a href="node-html-light.Node.html#.create">create</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Node.html#append">append</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChild">appendChild</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildAfter">appendChildAfter</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildBefore">appendChildBefore</a></li><li data-type='method'><a href="node-html-light.Node.html#attribute">attribute</a></li><li data-type='method'><a href="node-html-light.Node.html#attributes">attributes</a></li><li data-type='method'><a href="node-html-light.Node.html#find">find</a></li><li data-type='method'><a href="node-html-light.Node.html#name">name</a></li><li data-type='method'><a href="node-html-light.Node.html#removeAll">removeAll</a></li><li data-type='method'><a href="node-html-light.Node.html#removeFirst">removeFirst</a></li><li data-type='method'><a href="node-html-light.Node.html#replaceChild">replaceChild</a></li><li data-type='method'><a href="node-html-light.Node.html#toHtml">toHtml</a></li></ul></li><li><a href="node-html-light.Nodes.html">Nodes</a><ul class='methods'><li data-type='method'><a href="node-html-light.Nodes.html#.fromArray">fromArray</a></li><li data-type='method'><a href="node-html-light.Nodes.html#find">find</a></li></ul></li><li><a href="node-html-light.Text.html">Text</a><ul class='methods'><li data-type='method'><a href="node-html-light.Text.html#.fromString">fromString</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="node-html-light.html">node-html-light</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="node-html-light.Attribute.html">Attribute</a></li><li><a href="node-html-light.Document.html">Document</a><ul class='methods'><li data-type='method'><a href="node-html-light.Document.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Document.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Document.html#body">body</a></li><li data-type='method'><a href="node-html-light.Document.html#head">head</a></li><li data-type='method'><a href="node-html-light.Document.html#html">html</a></li></ul></li><li><a href="node-html-light.Node.html">Node</a><ul class='methods'><li data-type='method'><a href="node-html-light.Node.html#.create">create</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Node.html#append">append</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChild">appendChild</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildAfter">appendChildAfter</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildBefore">appendChildBefore</a></li><li data-type='method'><a href="node-html-light.Node.html#attribute">attribute</a></li><li data-type='method'><a href="node-html-light.Node.html#attributes">attributes</a></li><li data-type='method'><a href="node-html-light.Node.html#find">find</a></li><li data-type='method'><a href="node-html-light.Node.html#name">name</a></li><li data-type='method'><a href="node-html-light.Node.html#removeAll">removeAll</a></li><li data-type='method'><a href="node-html-light.Node.html#removeFirst">removeFirst</a></li><li data-type='method'><a href="node-html-light.Node.html#replaceChild">replaceChild</a></li><li data-type='method'><a href="node-html-light.Node.html#toHtml">toHtml</a></li></ul></li><li><a href="node-html-light.Nodes.html">Nodes</a><ul class='methods'><li data-type='method'><a href="node-html-light.Nodes.html#.fromArray">fromArray</a></li><li data-type='method'><a href="node-html-light.Nodes.html#find">find</a></li><li data-type='method'><a href="node-html-light.Nodes.html#forEach">forEach</a></li></ul></li><li><a href="node-html-light.Text.html">Text</a><ul class='methods'><li data-type='method'><a href="node-html-light.Text.html#.fromString">fromString</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="node-html-light.html">node-html-light</a></li></ul>
 </nav>
 
 <div id="main">
@@ -492,6 +492,9 @@
             
                 
 <span class="param-type">string</span>
+|
+
+<span class="param-type">Object</span>
 
 
             
@@ -513,7 +516,7 @@
                 </td>
             
 
-            <td class="description last">the nodes name</td>
+            <td class="description last">the nodes name or a pojo that will be wrapped</td>
         </tr>
 
     
@@ -1052,7 +1055,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line265">line 265</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line272">line 272</a>
     </li></ul></dd>
     
 
@@ -1201,7 +1204,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line254">line 254</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line261">line 261</a>
     </li></ul></dd>
     
 
@@ -1373,7 +1376,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line301">line 301</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line308">line 308</a>
     </li></ul></dd>
     
 
@@ -1545,7 +1548,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line289">line 289</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line296">line 296</a>
     </li></ul></dd>
     
 
@@ -1697,7 +1700,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line135">line 135</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line142">line 142</a>
     </li></ul></dd>
     
 
@@ -1797,7 +1800,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line151">line 151</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -2040,7 +2043,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line169">line 169</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line176">line 176</a>
     </li></ul></dd>
     
 
@@ -2140,7 +2143,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line125">line 125</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line132">line 132</a>
     </li></ul></dd>
     
 
@@ -2344,7 +2347,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line228">line 228</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line235">line 235</a>
     </li></ul></dd>
     
 
@@ -2548,7 +2551,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line203">line 203</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line210">line 210</a>
     </li></ul></dd>
     
 
@@ -2720,7 +2723,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line277">line 277</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line284">line 284</a>
     </li></ul></dd>
     
 
@@ -2820,7 +2823,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node.js.html">node.js</a>, <a href="node.js.html#line311">line 311</a>
+        <a href="node.js.html">node.js</a>, <a href="node.js.html#line318">line 318</a>
     </li></ul></dd>
     
 
