@@ -9,6 +9,7 @@ const expect = require('chai').expect
 describe('Nodes', () => {
 
     let nodes = null
+    let anotherNodes = null
 
     beforeEach(() => {
         const string = `<meta charset="utf-8">
@@ -18,6 +19,16 @@ describe('Nodes', () => {
 
         const node = Node.fromString(string)
         nodes = Nodes.fromArray(node)
+        const anotherString = `<html>
+            <head></head>
+            <body>
+                <div>Hello World!</div>
+                <div></div>
+            </body>
+            </html>
+        `
+        const anotherNode = Node.fromString(anotherString)
+        anotherNodes = Nodes.fromArray(anotherNode)
     })
     it('should find all four meta tags', () => {
         const metas = nodes.find({ name: 'meta', type: Node.TYPE_TAG })
@@ -37,8 +48,6 @@ describe('Nodes', () => {
     })
     it('should find two meta tags', () => {
         const metas = nodes.find({ name: 'meta', type: Node.TYPE_TAG }, null, 3)
-        console.log(metas[0].get().attribs)
-        console.log(metas[1].get().attribs)
         expect(metas[0].attribute('name').value).to.equal(undefined)
         expect(metas[1].attribute('name').value).to.equal('description')
         expect(metas[2].attribute('name').value).to.equal('viewport')
@@ -46,5 +55,26 @@ describe('Nodes', () => {
     it('should return an empty array', () => {
         const metas = nodes.find({ name: 'html', type: Node.TYPE_TAG })
         expect(metas.length).to.equal(0)
+    })
+    it('should invoke the callback function 7 times', () => {
+        let index = 0
+        nodes.forEach(() => {
+            index++
+        }, true)
+        expect(index).to.equal(4)
+    })
+    it('should invoke the callback function 3 times', () => {
+        let index = 0
+        anotherNodes.forEach(() => {
+            index++
+        })
+        expect(index).to.equal(1)
+    })
+    it('should invoke the callback function 5 times', () => {
+        let index = 0
+        anotherNodes.forEach(() => {
+            index++
+        }, true)
+        expect(index).to.equal(6)
     })
 })
