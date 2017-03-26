@@ -1,6 +1,6 @@
 {
   "name": "node-html-light",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Wrapper around htmlparser2 providing a more object oriented interface",
   "main": "lib/index.js",
   "scripts": {

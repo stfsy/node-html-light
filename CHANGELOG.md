@@ -1,3 +1,21 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/stfsy/node-html-light/compare/v0.6.0...v0.8.0) (2017-03-26)
+
+
+### Bug Fixes
+
+* **node.js:** fix creating nodes with html parser pojos ([7833336](https://github.com/stfsy/node-html-light/commit/7833336))
+* **package.json:** fit git push command ([0def570](https://github.com/stfsy/node-html-light/commit/0def570))
+* **package.json:** fix git push command ([13524f2](https://github.com/stfsy/node-html-light/commit/13524f2))
+
+
+### Features
+
+* **attributes.js:** add attributes class ([89ef6eb](https://github.com/stfsy/node-html-light/commit/89ef6eb))
+* **nodes.js:** add forEach method to allow iterating over nodes ([6d89c1c](https://github.com/stfsy/node-html-light/commit/6d89c1c))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/stfsy/node-html-light/compare/v0.6.0...v0.7.0) (2017-02-11)
 
