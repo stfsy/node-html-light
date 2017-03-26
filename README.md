@@ -16,7 +16,7 @@ Wrapper around htmlparser2 providing a more object oriented interface
 
 ```js
 const Document = require('node-html-light').Document
-const path = require('path').resolve
+const resolve = require('path').resolve
 
 Document.fromPath(resolve('index.html')).then((document) => {
     const head = document.head()
@@ -43,7 +43,6 @@ Node.fromPath(resolve('partial.html')).then((node) => {})
 ### Creating a Node using a String
 ```js
 const Node = require('node-html-light').Node
-const resolve = require('path').resolve
 
 const node = Node.fromString('<div></div>')
 ```
@@ -51,7 +50,6 @@ const node = Node.fromString('<div></div>')
 ```js
 const Node = require('node-html-light').Node
 const Attribute = require('node-html-light').Attribute
-const resolve = require('path').resolve
 
 const node = Node.create('meta', [
     new Attribute('name', 'viewport'),
@@ -75,3 +73,7 @@ Node.fromPath(resolve('partial.html')).then((node) => {
 ```js
 npm install node-html-light --save
 ```
+
+## License
+
+This project is distributed under the MIT license.
