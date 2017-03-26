@@ -49,12 +49,13 @@ const node = Node.fromString('<div></div>')
 ### Creating a raw Node
 ```js
 const Node = require('node-html-light').Node
-const Attribute = require('node-html-light').Attribute
+const Attributes = require('node-html-light').Attributes
 
-const node = Node.create('meta', [
-    new Attribute('name', 'viewport'),
-    new Attribute('theme-color', '#795548')
-])
+const node = Node.create('meta', Attributes.fromObject({
+        'name': 'viewport',
+        'theme-color': '#795548'
+    })
+)
 ```
 ### Finding a child Node
 ```js
@@ -63,9 +64,10 @@ const Attribute = require('node-html-light').Attribute
 const resolve = require('path').resolve
 
 Node.fromPath(resolve('partial.html')).then((node) => {
-    const content = node.find('div', [
-        new Attribute('id', 'content')
-    ])
+    const content = node.find('div', Attributes.fromObject({
+        'name': 'viewport',
+        'theme-color': '#795548'
+    }))
 })
 ```
 ## Installation
