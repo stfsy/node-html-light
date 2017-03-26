@@ -1,7 +1,7 @@
 {
   "name": "node-html-light",
   "version": "0.8.0",
-  "description": "Wrapper around htmlparser2 providing a more object oriented interface",
+  "description": "HTML Parser for NodeJS providing a lightweight object oriented interface",
   "main": "lib/index.js",
   "scripts": {
     "test-watch": "watch \"npm run test\" test/spec lib",
