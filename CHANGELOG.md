@@ -1,3 +1,8 @@
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/stfsy/node-html-light/compare/v0.8.0...v0.8.1) (2017-03-26)
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/stfsy/node-html-light/compare/v0.6.0...v0.8.0) (2017-03-26)
 
