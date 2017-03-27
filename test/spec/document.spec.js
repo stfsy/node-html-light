@@ -51,7 +51,7 @@ describe('Document', () => {
         Document.fromPath(resolve('test/withBody.html')).then((document) => {
             const body = document.html()
 
-            expect(body.name()).to.equal('html')
+            expect(body.name).to.equal('html')
         }).then(done, done)
     })
 
@@ -119,7 +119,7 @@ describe('Document', () => {
         Document.fromPath(resolve('test/withBody.html')).then((document) => {
             const roomOverview = document.find('room-overview')[0]
 
-            expect(roomOverview.name()).to.equal('room-overview')
+            expect(roomOverview.name).to.equal('room-overview')
             expect(roomOverview.attribute('empty').value).to.equal('true')
         }).then(done, done)
     })
