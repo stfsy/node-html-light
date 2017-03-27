@@ -370,7 +370,7 @@ describe('Node', () => {
     })
 
     it('should append a text node', () => {
-        const node = Node.fromString('<div></div>').appendChild(Text.fromString('eins')).appendChild(Text.fromString('deux'))
+        const node = Node.fromString('<div></div>').appendChild(Text.of('eins')).appendChild(Text.of('deux'))
 
         expect(node.get().children.length).to.equal(2)
         expect(node.get().children[0].data).to.equal('eins')
