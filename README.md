@@ -9,7 +9,7 @@
 [![Github issues](https://img.shields.io/github/issues/stfsy/node-html-light.svg)](https://github.com/stfsy/node-html-light/issues)
 [![License](https://img.shields.io/npm/l/node-html-light.svg)](https://github.com/stfsy/node-html-light/blob/master/LICENSE)
 
-Wrapper around htmlparser2 providing a more object oriented interface
+HTML Parser for NodeJS providing a lightweight object oriented interface
 
 ## Examples
 ### Creating a document using a file
