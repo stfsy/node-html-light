@@ -25,8 +25,8 @@ npm i node-html-light --save
 
 ### Document
 #### Class methods
-- static fromPath(path) -> [Document](#document)
-- static fromString(string) -> [Document](#document)
+- static **fromPath**(path) -> [Document](#document)
+- static **fromString**(string) -> [Document](#document)
 
 #### Instance properties
 - name
@@ -34,16 +34,16 @@ npm i node-html-light --save
 - attributes
 
 #### Instance methods
-- html() -> [Node](#node)
-- head() -> [Node](#node)
-- body() -> [Node](#node)
-- toHtml() -> String
+- **html**() -> [Node](#node)
+- **head**() -> [Node](#node)
+- **body**() -> [Node](#node)
+- **toHtml**() -> String
 
 ### Node
 #### Class methods
-- static fromPath(path) -> [Node](#node)|Array<[Node](#node)>
-- static fromString(string) -> [Node](#node)|Array<[Node](#node)>
-- static of (object|name, attrs) -> [Node](#node)|Array<[Node](#node)>
+- static **fromPath**(path) -> [Node](#node) | Array<[Node](#node)>
+- static **fromString**(string) -> [Node](#node) | Array<[Node](#node)>
+- static **of**(object | name, attrs) -> [Node](#node) | Array<[Node](#node)>
 
 #### Instance properties
 - name
@@ -51,20 +51,20 @@ npm i node-html-light --save
 - attributes
 
 #### Instance methods
-- appendChild (newChild) -> this
-- appendChildBefore (newChild, oldChild) -> this
-- appendChildAfter (newChild, oldChild) -> this
-- find (element, attrs, limit) -> Array<[Node](#node)>
-- replaceChild (newChild, oldChild) -> this
-- toHtml() -> String
+- **appendChild**(newChild) -> this
+- **appendChildBefore**(newChild, oldChild) -> this
+- **appendChildAfter**(newChild, oldChild) -> this
+- **find**(element, attrs, limit) -> Array<[Node](#node)>
+- **replaceChild**(newChild, oldChild) -> this
+- **toHtml**() -> String
 
 ### Attributes
 #### Class methods
-- static of(object) -> Array<Attribute>
+- static **of**(object) -> Array<Attribute>
 
 ### Text
 #### Class methods
-- static of(string) -> |Array<[Text](#text)>
+- static **of**(string) -> [Text](#text)
 
 ## Examples
 ### Creating a document using a file
