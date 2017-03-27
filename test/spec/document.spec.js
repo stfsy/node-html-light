@@ -60,7 +60,7 @@ describe('Document', () => {
             const head = document.head().get()
             const length = head.children.length
 
-            document.head().removeChild('meta')
+            document.head().removeChild('meta', null, Infinity)
 
             expect(head.children.length).to.equal(length - 4)
         }).then(done, done)
