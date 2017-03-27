@@ -105,43 +105,14 @@ describe('Node', () => {
         expect(node.get().attribs.content).to.equal('width=device-width, user-scalable=no')
     })
 
-    it('should remove a child element', () => {
-        const string = '<div><p id="1"></p><span></span><p id="2"></p></div>'
-        const node = Node.fromString(string)
-
-        node.removeFirst('p')
-
-        expect(node.get().children.length).to.equal(2)
-        expect(node.find('p')[0].attribute('id').value).to.equal('2')
-    })
-
     it('should remove all p child elements', () => {
         const string = '<div><p></p><span></span><p></p></div>'
         const node = Node.fromString(string)
 
-        node.removeAll('p')
+        node.removeChild('p')
 
         expect(node.get().children.length).to.equal(1)
         expect(node.get().children[0].name).to.equal('span')
-    })
-
-    it('should remove the meta tag with theme-color name', () => {
-        const string = [
-            '<head>',
-            '<meta content="" name="description">',
-            '<meta content="width=device-width,user-scalable=no" name="viewport">',
-            '<meta content="#795548" name="theme-color">',
-            '<title></title>',
-            '</head>'
-        ].join('')
-
-        const node = Node.fromString(string)
-
-        node.removeFirst('meta', [{ key: 'name', value: 'theme-color' }])
-        node.get().children.forEach((child) => {
-
-            expect(child.attribs.name).to.not.equal('theme-color')
-        })
     })
 
     it('should remove the meta tags with theme-color and description name', () => {
@@ -156,7 +127,7 @@ describe('Node', () => {
 
         const node = Node.fromString(string)
 
-        node.removeAll('meta', [
+        node.removeChild('meta', [
             new Attr('name', 'theme-color'),
             new Attr('name', 'description')
         ])
@@ -180,7 +151,7 @@ describe('Node', () => {
 
         const node = Node.fromString(string)
 
-        node.removeAll('meta', [
+        node.removeChild('meta', [
             new Attr('name', 'theme-color'),
             new Attr('name', 'description'),
             new Attr('name', 'viewport')
