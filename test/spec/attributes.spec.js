@@ -5,10 +5,6 @@ const expect = require('chai').expect
 
 describe('Attributes', () => {
 
-    beforeEach(() => {
-
-    })
-
     it('should return an empty array', () => {
         const result = Attributes.of()
         expect(result).to.be.defined
