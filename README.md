@@ -12,7 +12,16 @@
 HTML Parser for NodeJS providing a lightweight object oriented interface
 
 - [API](#api)
+    - [Document](#document)
+    - [Node](#node)
+    - [Attributes](#attributes)
+    - [Text](#text)
 - [Examples](#examples)
+    - [Creating a document using a file](#creating-a-document-using-a-file)
+    - [Creating a Node using a File](#creating-a-node-using-a-file)
+    - [Creating a Node using a String](#creating-a-node-using-a-string)
+    - [Creating a Node with raw data](#creating-a-node-with-raw-data)
+    - [Finding a child Node](#finding-a-child-node)
 - [License](#license)
 
 ### Installation
@@ -103,7 +112,7 @@ const Node = require('node-html-light').Node
 
 const node = Node.fromString('<div></div>')
 ```
-### Creating a raw Node
+### Creating a with raw data
 ```js
 const Node = require('node-html-light').Node
 const Attributes = require('node-html-light').Attributes
