@@ -74,7 +74,7 @@ describe('Node', () => {
     it('should create div tag with a text child node', () => {
         const parsed = htmlParser.parseDOM(`<div>{{ id }}</div>`)
         const node = Node.of(parsed[0])
-        expect(node.name()).to.equal('div')
+        expect(node.name).to.equal('div')
         expect(node.get().children[0].data).to.equal('{{ id }}')
         expect(node.get().children[0].type).to.equal('text')
     })
@@ -284,7 +284,7 @@ describe('Node', () => {
 
         node.replaceChild(new Node({ type: 'tag', name: 'span' }), node.find('table')[0])
 
-        expect(node.find('span')[0].name()).to.equal('span')
+        expect(node.find('span')[0].name).to.equal('span')
         expect(node.find('table')[0]).to.equal(undefined)
     })
 
@@ -300,7 +300,7 @@ describe('Node', () => {
 
         const node = Node.fromString(string)
 
-        expect(node.name()).to.equal('head')
+        expect(node.name).to.equal('head')
     })
 
     it('should return the correct name of the meta node', () => {
@@ -317,7 +317,7 @@ describe('Node', () => {
             new Attr('name', 'description')
         ])[0]
 
-        expect(node.name()).to.equal('meta')
+        expect(node.name).to.equal('meta')
     })
 
     it('should return the correct attributes of the meta node', () => {
@@ -457,6 +457,6 @@ describe('Node', () => {
         const meta = node.find('meta', null, 1)[0]
         const parent = meta.parent()
     
-        expect(parent.name()).to.equal('head')
+        expect(parent.name).to.equal('head')
     })
 })
