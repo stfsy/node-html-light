@@ -352,11 +352,27 @@ describe('Node', () => {
             new Attr('name', 'description')
         ])[0]
 
-        expect(node.attributes.length).to.equal(4)
-        expect(node.attributes[0].key).to.equal('content')
-        expect(node.attributes[1].key).to.equal('name')
-        expect(node.attributes[2].key).to.equal('id')
-        expect(node.attributes[3].key).to.equal('abc')
+        expect(Object.keys(node.attributes).length).to.equal(4)
+        expect(node.attributes.content).to.equal('')
+        expect(node.attributes.name).to.equal('description')
+        expect(node.attributes.id).to.equal('0815')
+        expect(node.attributes.abc).to.equal('123')
+    })
+
+    it('should not return undefined if no attributes are set', () => {
+        const string = [
+            '<head>',
+            '<meta content="" name="description" id="0815" abc="123">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join('')
+
+        const head = Node.fromString(string)
+
+        expect(head.name).to.equal('head')
+        expect(head.attributes).to.be.defined
     })
 
     it('should append a text node', () => {
