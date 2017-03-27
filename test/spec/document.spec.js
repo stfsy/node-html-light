@@ -60,7 +60,7 @@ describe('Document', () => {
             const head = document.head().get()
             const length = head.children.length
 
-            document.head().removeAll('meta')
+            document.head().removeChild('meta')
 
             expect(head.children.length).to.equal(length - 4)
         }).then(done, done)
@@ -72,7 +72,7 @@ describe('Document', () => {
             const body = document.body().get()
             const length = body.children.length
 
-            document.body().removeAll('room-overview')
+            document.body().removeChild('room-overview')
 
             expect(body.children.length).to.equal(length - 1)
         }).then(done, done)
