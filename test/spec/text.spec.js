@@ -18,7 +18,7 @@ describe('Text', () => {
 
     it('should create a text element', () => {
 
-        const textNode = new Text('ABCDEFGH').get()
+        const textNode = Text.of('ABCDEFGH').get()
 
         for(let key in parsed) {
 
