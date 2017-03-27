@@ -19,10 +19,10 @@ describe('Document', () => {
         Document.fromPath(resolve('test/withMeta.html')).then((document) => {
             const metas = document.head().find('meta')
 
-            expect(metas[0].attribute('name').value).to.equal(undefined)
-            expect(metas[1].attribute('name').value).to.equal('description')
-            expect(metas[2].attribute('name').value).to.equal('viewport')
-            expect(metas[3].attribute('name').value).to.equal('theme-color')
+            expect(metas[0].attributes.name).to.equal(undefined)
+            expect(metas[1].attributes.content).to.equal('')
+            expect(metas[2].attributes.content).to.equal('width=device-width, user-scalable=no')
+            expect(metas[3].attributes.content).to.equal('#795548')
         }).then(done, done)
     })
 
@@ -30,8 +30,8 @@ describe('Document', () => {
         Document.fromPath(resolve('test/withStyles.html')).then((document) => {
             const styles = document.head().find('link')
 
-            expect(styles[0].attribute('href').value).to.equal('bootstrap.css')
-            expect(styles[1].attribute('href').value).to.equal('stfsy.css')
+            expect(styles[0].attributes.href).to.equal('bootstrap.css')
+            expect(styles[1].attributes.href).to.equal('stfsy.css')
         }).then(done, done)
     })
 
@@ -120,7 +120,7 @@ describe('Document', () => {
             const roomOverview = document.find('room-overview')[0]
 
             expect(roomOverview.name).to.equal('room-overview')
-            expect(roomOverview.attribute('empty').value).to.equal('true')
+            expect(roomOverview.attributes.empty).to.equal('true')
         }).then(done, done)
     })
 })
