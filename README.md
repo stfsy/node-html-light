@@ -15,6 +15,12 @@ HTML Parser for NodeJS providing a lightweight object oriented interface
 - [Examples](#examples)
 - [License](#license)
 
+### Installation
+
+```js
+npm i node-html-light --save
+```
+
 ## API
 
 ### Document
@@ -120,11 +126,6 @@ Node.fromPath(resolve('partial.html')).then((node) => {
         'theme-color': '#795548'
     }))
 })
-```
-## Installation
-
-```js
-npm install node-html-light --save
 ```
 
 ## License
