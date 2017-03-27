@@ -21,7 +21,7 @@ HTML Parser for NodeJS providing a lightweight object oriented interface
     - [Create a Node using a File](#create-a-node-using-a-file)
     - [Create a Node using a String](#create-a-node-using-a-string)
     - [Create a Node with raw data](#create-a-node-with-raw-data)
-    - [Find a child Node of an existing Element](#finding-a-child-node-of-an-existing-element)
+    - [Find a child Node of an existing Element](#find-a-child-node-of-an-existing-element)
 - [License](#license)
 
 ### Installation
