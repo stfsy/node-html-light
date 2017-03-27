@@ -51,7 +51,7 @@ const node = Node.fromString('<div></div>')
 const Node = require('node-html-light').Node
 const Attributes = require('node-html-light').Attributes
 
-const node = Node.create('meta', Attributes.fromObject({
+const node = Node.of('meta', Attributes.of({
         'name': 'viewport',
         'theme-color': '#795548'
     })
@@ -64,7 +64,7 @@ const Attribute = require('node-html-light').Attribute
 const resolve = require('path').resolve
 
 Node.fromPath(resolve('partial.html')).then((node) => {
-    const content = node.find('div', Attributes.fromObject({
+    const content = node.find('div', Attributes.of({
         'name': 'viewport',
         'theme-color': '#795548'
     }))
