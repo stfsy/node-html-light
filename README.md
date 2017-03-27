@@ -60,11 +60,11 @@ npm i node-html-light --save
 - attributes
 
 #### Instance methods
-- **appendChild**(newChild) -> this
-- **appendChildBefore**(newChild, oldChild) -> this
-- **appendChildAfter**(newChild, oldChild) -> this
+- **appendChild**(newChild) -> void
+- **appendChildBefore**(newChild, oldChild) -> void
+- **appendChildAfter**(newChild, oldChild) -> void
 - **find**(element, attrs, limit) -> Array<[Node](#node)>
-- **replaceChild**(newChild, oldChild) -> this
+- **replaceChild**(newChild, oldChild) -> void
 - **toHtml**() -> String
 
 ### Attributes
