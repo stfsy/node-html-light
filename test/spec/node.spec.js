@@ -442,4 +442,21 @@ describe('Node', () => {
             expect(metas[4].attribute('name').value).to.equal('theme-color')
         }).then(done, done)
     })
+
+    it('should return the parent node', () => {
+        const string = [
+            '<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join('')
+
+        const node = Node.fromString(string)
+        const meta = node.find('meta', null, 1)[0]
+        const parent = meta.parent()
+    
+        expect(parent.name()).to.equal('head')
+    })
 })
