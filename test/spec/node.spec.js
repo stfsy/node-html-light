@@ -65,7 +65,7 @@ describe('Node', () => {
     })
 
     it('should have the correct tag name', () => {
-        const node = Node.create('meta')
+        const node = Node.of('meta')
 
         expect(node.get().name).to.equal('meta')
         expect(node.get().type).to.equal('tag')
@@ -73,7 +73,7 @@ describe('Node', () => {
 
     it('should create div tag with a text child node', () => {
         const parsed = htmlParser.parseDOM(`<div>{{ id }}</div>`)
-        const node = Node.create(parsed[0])
+        const node = Node.of(parsed[0])
         expect(node.name()).to.equal('div')
         expect(node.get().children[0].data).to.equal('{{ id }}')
         expect(node.get().children[0].type).to.equal('text')
@@ -88,7 +88,7 @@ describe('Node', () => {
     })
 
     it('should have the correct tag name and type', () => {
-        const node = Node.create('script')
+        const node = Node.of('script')
 
         expect(node.get().name).to.equal('script')
         expect(node.get().type).to.equal('script')
