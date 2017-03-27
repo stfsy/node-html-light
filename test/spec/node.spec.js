@@ -22,10 +22,10 @@ describe('Node', () => {
         Node.fromPath(resolve('test/withMeta.html')).then((node) => {
             const metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
 
-            expect(metas[0].attribute('name').value).to.equal(undefined)
-            expect(metas[1].attribute('name').value).to.equal('description')
-            expect(metas[2].attribute('name').value).to.equal('viewport')
-            expect(metas[3].attribute('name').value).to.equal('theme-color')
+            expect(metas[0].attributes.name).to.equal(undefined)
+            expect(metas[1].attributes.name).to.equal('description')
+            expect(metas[2].attributes.name).to.equal('viewport')
+            expect(metas[3].attributes.name).to.equal('theme-color')
         }).then(done, done)
     })
 
@@ -334,8 +334,7 @@ describe('Node', () => {
             new Attr('name', 'description')
         ])[0]
 
-        expect(node.attribute('name').key).to.equal('name')
-        expect(node.attribute('name').value).to.equal('description')
+        expect(node.attributes.name).to.equal('description')
     })
 
     it('should return the correct attributes of the meta node', () => {
@@ -395,9 +394,9 @@ describe('Node', () => {
     it('should add a attribute', () => {
 
         const node = Node.fromString('<div></div>')
-        node.attribute(new Attr('id', 'content'))
+        node.attributes.id = 'content'
 
-        expect(node.attribute('id').value).to.equal('content')
+        expect(node.attributes.id).to.equal('content')
     })
 
     it('should find a comment node', () => {
@@ -433,11 +432,11 @@ describe('Node', () => {
             metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
 
             expect(metas.length).to.equal(5)
-            expect(metas[0].attribute('name').value).to.equal(undefined)
-            expect(metas[1].attribute('name').value).to.equal('description')
-            expect(metas[2].attribute('name').value).to.equal('author')
-            expect(metas[3].attribute('name').value).to.equal('viewport')
-            expect(metas[4].attribute('name').value).to.equal('theme-color')
+            expect(metas[0].attributes.name).to.equal(undefined)
+            expect(metas[1].attributes.name).to.equal('description')
+            expect(metas[2].attributes.name).to.equal('author')
+            expect(metas[3].attributes.name).to.equal('viewport')
+            expect(metas[4].attributes.name).to.equal('theme-color')
         }).then(done, done)
     })
 
@@ -451,11 +450,11 @@ describe('Node', () => {
             metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
 
             expect(metas.length).to.equal(5)
-            expect(metas[0].attribute('name').value).to.equal(undefined)
-            expect(metas[1].attribute('name').value).to.equal('author')
-            expect(metas[2].attribute('name').value).to.equal('description')
-            expect(metas[3].attribute('name').value).to.equal('viewport')
-            expect(metas[4].attribute('name').value).to.equal('theme-color')
+            expect(metas[0].attributes.name).to.equal(undefined)
+            expect(metas[1].attributes.name).to.equal('author')
+            expect(metas[2].attributes.name).to.equal('description')
+            expect(metas[3].attributes.name).to.equal('viewport')
+            expect(metas[4].attributes.name).to.equal('theme-color')
         }).then(done, done)
     })
 
