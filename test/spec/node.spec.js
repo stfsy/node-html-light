@@ -352,11 +352,11 @@ describe('Node', () => {
             new Attr('name', 'description')
         ])[0]
 
-        expect(node.attributes().length).to.equal(4)
-        expect(node.attributes()[0].key).to.equal('content')
-        expect(node.attributes()[1].key).to.equal('name')
-        expect(node.attributes()[2].key).to.equal('id')
-        expect(node.attributes()[3].key).to.equal('abc')
+        expect(node.attributes.length).to.equal(4)
+        expect(node.attributes[0].key).to.equal('content')
+        expect(node.attributes[1].key).to.equal('name')
+        expect(node.attributes[2].key).to.equal('id')
+        expect(node.attributes[3].key).to.equal('abc')
     })
 
     it('should append a text node', () => {
