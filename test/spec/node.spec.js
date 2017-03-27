@@ -455,7 +455,7 @@ describe('Node', () => {
 
         const node = Node.fromString(string)
         const meta = node.find('meta', null, 1)[0]
-        const parent = meta.parent()
+        const parent = meta.parent
     
         expect(parent.name).to.equal('head')
     })
