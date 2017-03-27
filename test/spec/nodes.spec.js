@@ -18,7 +18,7 @@ describe('Nodes', () => {
                 <meta name="theme-color" content="#795548">`
 
         const node = Node.fromString(string)
-        nodes = Nodes.fromArray(node)
+        nodes = Nodes.of(node)
         const anotherString = `<html>
             <head></head>
             <body>
@@ -28,7 +28,7 @@ describe('Nodes', () => {
             </html>
         `
         const anotherNode = Node.fromString(anotherString)
-        anotherNodes = Nodes.fromArray(anotherNode)
+        anotherNodes = Nodes.of(anotherNode)
     })
     it('should find all four meta tags', () => {
         const metas = nodes.find({ name: 'meta', type: Node.TYPE_TAG })
