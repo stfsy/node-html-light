@@ -17,11 +17,11 @@ HTML Parser for NodeJS providing a lightweight object oriented interface
     - [Attributes](#attributes)
     - [Text](#text)
 - [Examples](#examples)
-    - [Creating a document using a file](#creating-a-document-using-a-file)
-    - [Creating a Node using a File](#creating-a-node-using-a-file)
-    - [Creating a Node using a String](#creating-a-node-using-a-string)
-    - [Creating a Node with raw data](#creating-a-node-with-raw-data)
-    - [Finding a child Node](#finding-a-child-node)
+    - [Create a document using a file](#create-a-document-using-a-file)
+    - [Create a Node using a File](#create-a-node-using-a-file)
+    - [Create a Node using a String](#create-a-node-using-a-string)
+    - [Create a Node with raw data](#create-a-node-with-raw-data)
+    - [Find a child Node of an existing Element](#finding-a-child-node-of-an-existing-element)
 - [License](#license)
 
 ### Installation
@@ -76,7 +76,7 @@ npm i node-html-light --save
 - static **of**(string) -> [Text](#text)
 
 ## Examples
-### Creating a document using a file
+### Create a document using a file
 
 ```js
 const Document = require('node-html-light').Document
@@ -99,20 +99,20 @@ Document.fromPath(resolve('./index.html')).then((document) => {
 })
 ```
 
-### Creating a Node using a File
+### Create a Node using a File
 ```js
 const Node = require('node-html-light').Node
 const resolve = require('path').resolve
 
 Node.fromPath(resolve('partial.html')).then((node) => {})
 ```
-### Creating a Node using a String
+### Create a Node using a String
 ```js
 const Node = require('node-html-light').Node
 
 const node = Node.fromString('<div></div>')
 ```
-### Creating a with raw data
+### Create a Node with raw data
 ```js
 const Node = require('node-html-light').Node
 const Attributes = require('node-html-light').Attributes
@@ -123,7 +123,7 @@ const node = Node.of('meta', Attributes.of({
     })
 )
 ```
-### Finding a child Node
+### Find a child Node of an existing Element
 ```js
 const Node = require('node-html-light').Node
 const Attribute = require('node-html-light').Attribute
