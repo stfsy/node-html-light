@@ -476,4 +476,20 @@ describe('Node', () => {
     
         expect(parent.name).to.equal('head')
     })
+
+    it('should return null if no parent node exists', () => {
+        const string = [
+            '<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join('')
+
+        const node = Node.fromString(string)
+        
+        expect(node.name).to.equal('head')
+        expect(node.parent).to.equal(null)
+    })
 })
