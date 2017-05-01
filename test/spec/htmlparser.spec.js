@@ -81,6 +81,19 @@ describe('HtmlParser', () => {
         expect(parsed[0].children[3].data).to.equal(' @amy import b.html forEach a.b.c.e ')
     })
 
+    it.only('should contain a undefined data attribute', () => {
+
+        const parsed = htmlParser.parseDOM(`<div>
+          <!-- @amy import a.html with a.b.c.d -->
+          <!-- @amy import b.html forEach a.b.c.e -->
+        </div>`)
+
+        expect(parsed[0].type).to.equal('tag')
+        expect(parsed[0].name).to.equal('div')
+        expect(parsed[0].data).to.equal(undefined)
+
+    })
+
     it('should parse text', () => {
         const parsed = htmlParser.parseDOM(`Hello`)
 
