@@ -81,7 +81,7 @@ describe('HtmlParser', () => {
         expect(parsed[0].children[3].data).to.equal(' @amy import b.html forEach a.b.c.e ')
     })
 
-    it.only('should contain a undefined data attribute', () => {
+    it('should contain a undefined data attribute', () => {
 
         const parsed = htmlParser.parseDOM(`<div>
           <!-- @amy import a.html with a.b.c.d -->
