@@ -1,3 +1,56 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/stfsy/node-html-light/compare/v0.8.1...v1.0.0) (2017-05-12)
+
+
+### Bug Fixes
+
+* **node.js:** return null if node has no parent ([39856bc](https://github.com/stfsy/node-html-light/commit/39856bc))
+
+
+### Code Refactoring
+
+* **node.js:** chainable methods no longer return this ([42d0548](https://github.com/stfsy/node-html-light/commit/42d0548))
+
+
+### Features
+
+* **attribute.js:** add static of method ([498aee6](https://github.com/stfsy/node-html-light/commit/498aee6))
+* **attributes.js:** rename fromObject to of ([6763c53](https://github.com/stfsy/node-html-light/commit/6763c53))
+* **node.js:** add getter for parent node ([b834c46](https://github.com/stfsy/node-html-light/commit/b834c46))
+* **node.js:** add type property ([e4a7127](https://github.com/stfsy/node-html-light/commit/e4a7127))
+* **node.js:** convert attributes to property via get ([d960e47](https://github.com/stfsy/node-html-light/commit/d960e47))
+* **node.js:** convert name function to property via get ([bd59ea6](https://github.com/stfsy/node-html-light/commit/bd59ea6))
+* **node.js:** convert parent fn to property via get ([b95bf36](https://github.com/stfsy/node-html-light/commit/b95bf36))
+* **node.js:** limit max number of deletable elements in removeChild ([c626b77](https://github.com/stfsy/node-html-light/commit/c626b77))
+* **node.js:** remove append method ([97d4f1b](https://github.com/stfsy/node-html-light/commit/97d4f1b))
+* **node.js:** remove attribute method ([ece5e00](https://github.com/stfsy/node-html-light/commit/ece5e00))
+* **node.js:** remove method removeFirst ([10b15e2](https://github.com/stfsy/node-html-light/commit/10b15e2))
+* **node.js:** rename create to of ([a902cd0](https://github.com/stfsy/node-html-light/commit/a902cd0))
+* **node.js:** rename method removeAll to removeChild ([9181fbb](https://github.com/stfsy/node-html-light/commit/9181fbb))
+* **node.js:** return attributes as object instead of an array ([7e47992](https://github.com/stfsy/node-html-light/commit/7e47992))
+* **nodes.js:** rename fromString to of ([a2f57fa](https://github.com/stfsy/node-html-light/commit/a2f57fa))
+* **text.js:** rename fromString to of ([95a8722](https://github.com/stfsy/node-html-light/commit/95a8722))
+
+
+### BREAKING CHANGES
+
+* **node.js:** removeChild(), appendChild(), appendChildBefore(), appendChildAfter()
+and replaceChild no longer return this.
+* **nodes.js:** Method from String no longer exists. Use Nodes.of instead.
+* **node.js:** Property attributes is now of type object.
+* **node.js:** Method attributes does no longer exist. Use property attributes instead.
+* **node.js:** Method name does no longer exist. Use the property name instead.
+* **node.js:** Method append does no longer exist. Use parent() and appendChild()
+instead
+* **node.js:** Method attribute does no longer exist. Use property attributes instead.
+* **node.js:** Method removeFirst does no longer exist. Use removeChild instead.
+* **node.js:** Method create does no longer exist. Use Node.of instead.
+* **text.js:** Method fromString does no longer exist. Use Text.of instead.
+* **attributes.js:** Method fromObject no longer exists. Use Attributes.of instead.
+* **node.js:** Method removeAll does no longer exist. Use removeChild instead.
+
+
+
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/stfsy/node-html-light/compare/v0.8.0...v0.8.1) (2017-03-26)
 
