@@ -22,10 +22,10 @@ describe('Node', () => {
         Node.fromPath(resolve('test/withMeta.html')).then((node) => {
             const metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
 
-            expect(metas[0].attribute('name').value).to.equal(undefined)
-            expect(metas[1].attribute('name').value).to.equal('description')
-            expect(metas[2].attribute('name').value).to.equal('viewport')
-            expect(metas[3].attribute('name').value).to.equal('theme-color')
+            expect(metas[0].attributes.name).to.equal(undefined)
+            expect(metas[1].attributes.name).to.equal('description')
+            expect(metas[2].attributes.name).to.equal('viewport')
+            expect(metas[3].attributes.name).to.equal('theme-color')
         }).then(done, done)
     })
 
@@ -65,7 +65,7 @@ describe('Node', () => {
     })
 
     it('should have the correct tag name', () => {
-        const node = Node.create('meta')
+        const node = Node.of('meta')
 
         expect(node.get().name).to.equal('meta')
         expect(node.get().type).to.equal('tag')
@@ -73,8 +73,8 @@ describe('Node', () => {
 
     it('should create div tag with a text child node', () => {
         const parsed = htmlParser.parseDOM(`<div>{{ id }}</div>`)
-        const node = Node.create(parsed[0])
-        expect(node.name()).to.equal('div')
+        const node = Node.of(parsed[0])
+        expect(node.name).to.equal('div')
         expect(node.get().children[0].data).to.equal('{{ id }}')
         expect(node.get().children[0].type).to.equal('text')
     })
@@ -88,7 +88,7 @@ describe('Node', () => {
     })
 
     it('should have the correct tag name and type', () => {
-        const node = Node.create('script')
+        const node = Node.of('script')
 
         expect(node.get().name).to.equal('script')
         expect(node.get().type).to.equal('script')
@@ -105,43 +105,14 @@ describe('Node', () => {
         expect(node.get().attribs.content).to.equal('width=device-width, user-scalable=no')
     })
 
-    it('should remove a child element', () => {
-        const string = '<div><p id="1"></p><span></span><p id="2"></p></div>'
-        const node = Node.fromString(string)
-
-        node.removeFirst('p')
-
-        expect(node.get().children.length).to.equal(2)
-        expect(node.find('p')[0].attribute('id').value).to.equal('2')
-    })
-
     it('should remove all p child elements', () => {
         const string = '<div><p></p><span></span><p></p></div>'
         const node = Node.fromString(string)
 
-        node.removeAll('p')
+        node.removeChild('p', null, Infinity)
 
         expect(node.get().children.length).to.equal(1)
         expect(node.get().children[0].name).to.equal('span')
-    })
-
-    it('should remove the meta tag with theme-color name', () => {
-        const string = [
-            '<head>',
-            '<meta content="" name="description">',
-            '<meta content="width=device-width,user-scalable=no" name="viewport">',
-            '<meta content="#795548" name="theme-color">',
-            '<title></title>',
-            '</head>'
-        ].join('')
-
-        const node = Node.fromString(string)
-
-        node.removeFirst('meta', [{ key: 'name', value: 'theme-color' }])
-        node.get().children.forEach((child) => {
-
-            expect(child.attribs.name).to.not.equal('theme-color')
-        })
     })
 
     it('should remove the meta tags with theme-color and description name', () => {
@@ -156,15 +127,34 @@ describe('Node', () => {
 
         const node = Node.fromString(string)
 
-        node.removeAll('meta', [
+        node.removeChild('meta', [
             new Attr('name', 'theme-color'),
             new Attr('name', 'description')
-        ])
+        ], 2)
 
         node.get().children.forEach((child) => {
 
             expect(child.attribs.name).to.not.equal('description')
             expect(child.attribs.name).to.not.equal('theme-color')
+        })
+    })
+
+    it('should remove the meta tag with theme-color', () => {
+        const string = [
+            '<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join('')
+
+        const node = Node.fromString(string)
+
+        node.removeChild('meta', null, 1)
+
+        node.get().children.forEach((child) => {
+            expect(child.attribs.name).to.not.equal('description')
         })
     })
 
@@ -180,11 +170,11 @@ describe('Node', () => {
 
         const node = Node.fromString(string)
 
-        node.removeAll('meta', [
+        node.removeChild('meta', [
             new Attr('name', 'theme-color'),
             new Attr('name', 'description'),
             new Attr('name', 'viewport')
-        ])
+        ], Infinity)
 
         node.get().children.forEach((child) => {
 
@@ -294,7 +284,7 @@ describe('Node', () => {
 
         node.replaceChild(new Node({ type: 'tag', name: 'span' }), node.find('table')[0])
 
-        expect(node.find('span')[0].name()).to.equal('span')
+        expect(node.find('span')[0].name).to.equal('span')
         expect(node.find('table')[0]).to.equal(undefined)
     })
 
@@ -310,7 +300,7 @@ describe('Node', () => {
 
         const node = Node.fromString(string)
 
-        expect(node.name()).to.equal('head')
+        expect(node.name).to.equal('head')
     })
 
     it('should return the correct name of the meta node', () => {
@@ -327,7 +317,7 @@ describe('Node', () => {
             new Attr('name', 'description')
         ])[0]
 
-        expect(node.name()).to.equal('meta')
+        expect(node.name).to.equal('meta')
     })
 
     it('should return the correct attributes of the meta node', () => {
@@ -344,8 +334,7 @@ describe('Node', () => {
             new Attr('name', 'description')
         ])[0]
 
-        expect(node.attribute('name').key).to.equal('name')
-        expect(node.attribute('name').value).to.equal('description')
+        expect(node.attributes.name).to.equal('description')
     })
 
     it('should return the correct attributes of the meta node', () => {
@@ -362,15 +351,33 @@ describe('Node', () => {
             new Attr('name', 'description')
         ])[0]
 
-        expect(node.attributes().length).to.equal(4)
-        expect(node.attributes()[0].key).to.equal('content')
-        expect(node.attributes()[1].key).to.equal('name')
-        expect(node.attributes()[2].key).to.equal('id')
-        expect(node.attributes()[3].key).to.equal('abc')
+        expect(Object.keys(node.attributes).length).to.equal(4)
+        expect(node.attributes.content).to.equal('')
+        expect(node.attributes.name).to.equal('description')
+        expect(node.attributes.id).to.equal('0815')
+        expect(node.attributes.abc).to.equal('123')
+    })
+
+    it('should not return undefined if no attributes are set', () => {
+        const string = [
+            '<head>',
+            '<meta content="" name="description" id="0815" abc="123">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join('')
+
+        const head = Node.fromString(string)
+
+        expect(head.name).to.equal('head')
+        expect(head.attributes).to.be.defined
     })
 
     it('should append a text node', () => {
-        const node = Node.fromString('<div></div>').appendChild(Text.fromString('eins')).appendChild(Text.fromString('deux'))
+        const node = Node.fromString('<div></div>')
+        node.appendChild(Text.of('eins'))
+        node.appendChild(Text.of('deux'))
 
         expect(node.get().children.length).to.equal(2)
         expect(node.get().children[0].data).to.equal('eins')
@@ -389,9 +396,9 @@ describe('Node', () => {
     it('should add a attribute', () => {
 
         const node = Node.fromString('<div></div>')
-        node.attribute(new Attr('id', 'content'))
+        node.attributes.id = 'content'
 
-        expect(node.attribute('id').value).to.equal('content')
+        expect(node.attributes.id).to.equal('content')
     })
 
     it('should find a comment node', () => {
@@ -427,11 +434,11 @@ describe('Node', () => {
             metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
 
             expect(metas.length).to.equal(5)
-            expect(metas[0].attribute('name').value).to.equal(undefined)
-            expect(metas[1].attribute('name').value).to.equal('description')
-            expect(metas[2].attribute('name').value).to.equal('author')
-            expect(metas[3].attribute('name').value).to.equal('viewport')
-            expect(metas[4].attribute('name').value).to.equal('theme-color')
+            expect(metas[0].attributes.name).to.equal(undefined)
+            expect(metas[1].attributes.name).to.equal('description')
+            expect(metas[2].attributes.name).to.equal('author')
+            expect(metas[3].attributes.name).to.equal('viewport')
+            expect(metas[4].attributes.name).to.equal('theme-color')
         }).then(done, done)
     })
 
@@ -445,11 +452,69 @@ describe('Node', () => {
             metas = node.find({ name: 'meta', type: Node.TYPE_TAG })
 
             expect(metas.length).to.equal(5)
-            expect(metas[0].attribute('name').value).to.equal(undefined)
-            expect(metas[1].attribute('name').value).to.equal('author')
-            expect(metas[2].attribute('name').value).to.equal('description')
-            expect(metas[3].attribute('name').value).to.equal('viewport')
-            expect(metas[4].attribute('name').value).to.equal('theme-color')
+            expect(metas[0].attributes.name).to.equal(undefined)
+            expect(metas[1].attributes.name).to.equal('author')
+            expect(metas[2].attributes.name).to.equal('description')
+            expect(metas[3].attributes.name).to.equal('viewport')
+            expect(metas[4].attributes.name).to.equal('theme-color')
         }).then(done, done)
+    })
+
+    it('should return the parent node', () => {
+        const string = [
+            '<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join('')
+
+        const node = Node.fromString(string)
+        const meta = node.find('meta', null, 1)[0]
+        const parent = meta.parent
+    
+        expect(parent.name).to.equal('head')
+    })
+
+    it('should return null if no parent node exists', () => {
+        const string = [
+            '<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join('')
+
+        const node = Node.fromString(string)
+        
+        expect(node.name).to.equal('head')
+        expect(node.parent).to.equal(null)
+    })
+
+    it('should return type tag', () => {
+        const string = [
+            '<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join('')
+
+        const node = Node.fromString(string)
+        
+        expect(node.name).to.equal('head')
+        expect(node.type).to.equal('tag')
+    })
+
+      it('should return type text', () => {
+        const string = [ 'abc'
+        ].join('')
+
+        const node = Node.fromString(string)
+        
+        expect(node.type).to.equal('text')
     })
 })

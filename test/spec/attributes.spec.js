@@ -5,18 +5,14 @@ const expect = require('chai').expect
 
 describe('Attributes', () => {
 
-    beforeEach(() => {
-
-    })
-
     it('should return an empty array', () => {
-        const result = Attributes.fromObject()
+        const result = Attributes.of()
         expect(result).to.be.defined
         expect(result.length).to.equal(0)
     })
 
     it('should return an array with 2 elements', () => {
-        const result = Attributes.fromObject({
+        const result = Attributes.of({
             'content-type': 'application/json',
             'accept': 'everything'
         })

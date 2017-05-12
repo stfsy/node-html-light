@@ -11,15 +11,81 @@
 
 HTML Parser for NodeJS providing a lightweight object oriented interface
 
+- [API](#api)
+    - [Document](#document)
+    - [Node](#node)
+    - [Attributes](#attributes)
+    - [Text](#text)
+- [Examples](#examples)
+    - [Create a document using a file](#create-a-document-using-a-file)
+    - [Create a Node using a File](#create-a-node-using-a-file)
+    - [Create a Node using a String](#create-a-node-using-a-string)
+    - [Create a Node with raw data](#create-a-node-with-raw-data)
+    - [Find a child Node of an existing Element](#find-a-child-node-of-an-existing-element)
+- [License](#license)
+
+### Installation
+
+```js
+npm i node-html-light --save
+```
+
+## API
+
+### Document
+#### Class methods
+- static **fromPath**(path) -> [Document](#document)
+- static **fromString**(string) -> [Document](#document)
+
+#### Instance properties
+- name
+- parent
+- attributes
+
+#### Instance methods
+- **html**() -> [Node](#node)
+- **head**() -> [Node](#node)
+- **body**() -> [Node](#node)
+- **toHtml**() -> String
+
+### Node
+#### Class methods
+- static **fromPath**(path) -> [Node](#node) | Array<[Node](#node)>
+- static **fromString**(string) -> [Node](#node) | Array<[Node](#node)>
+- static **of**(object | name, attrs) -> [Node](#node) | Array<[Node](#node)>
+
+#### Instance properties
+- name
+- parent
+- attributes
+
+#### Instance methods
+- **appendChild**(newChild) -> void
+- **appendChildBefore**(newChild, oldChild) -> void
+- **appendChildAfter**(newChild, oldChild) -> void
+- **find**(element, attrs, limit) -> Array<[Node](#node)>
+- **replaceChild**(newChild, oldChild) -> void
+- **toHtml**() -> String
+
+### Attributes
+#### Class methods
+- static **of**(object) -> Array<Attribute>
+
+### Text
+#### Class methods
+- static **of**(string) -> [Text](#text)
+
 ## Examples
-### Creating a document using a file
+### Create a document using a file
 
 ```js
 const Document = require('node-html-light').Document
 const resolve = require('path').resolve
 
-Document.fromPath(resolve('index.html')).then((document) => {
+Document.fromPath(resolve('./index.html')).then((document) => {
+    // head is an instance of Node
     const head = document.head()
+    // body is an instance of Node
     const body = document.body()
 
     // find child elements
@@ -33,47 +99,42 @@ Document.fromPath(resolve('index.html')).then((document) => {
 })
 ```
 
-### Creating a Node using a File
+### Create a Node using a File
 ```js
 const Node = require('node-html-light').Node
 const resolve = require('path').resolve
 
 Node.fromPath(resolve('partial.html')).then((node) => {})
 ```
-### Creating a Node using a String
+### Create a Node using a String
 ```js
 const Node = require('node-html-light').Node
 
 const node = Node.fromString('<div></div>')
 ```
-### Creating a raw Node
+### Create a Node with raw data
 ```js
 const Node = require('node-html-light').Node
 const Attributes = require('node-html-light').Attributes
 
-const node = Node.create('meta', Attributes.fromObject({
+const node = Node.of('meta', Attributes.of({
         'name': 'viewport',
         'theme-color': '#795548'
     })
 )
 ```
-### Finding a child Node
+### Find a child Node of an existing Element
 ```js
 const Node = require('node-html-light').Node
 const Attribute = require('node-html-light').Attribute
 const resolve = require('path').resolve
 
 Node.fromPath(resolve('partial.html')).then((node) => {
-    const content = node.find('div', Attributes.fromObject({
+    const content = node.find('div', Attributes.of({
         'name': 'viewport',
         'theme-color': '#795548'
     }))
 })
-```
-## Installation
-
-```js
-npm install node-html-light --save
 ```
 
 ## License
