@@ -126,7 +126,7 @@ const node = Node.of('meta', Attributes.of({
 ### Find a child Node of an existing Element
 ```js
 const Node = require('node-html-light').Node
-const Attribute = require('node-html-light').Attribute
+const Attributes = require('node-html-light').Attributes
 const resolve = require('path').resolve
 
 Node.fromPath(resolve('partial.html')).then((node) => {
