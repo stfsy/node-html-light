@@ -7,7 +7,6 @@ describe('Attributes', () => {
 
     it('should return an empty array', () => {
         const result = Attributes.of()
-        expect(result).to.be.defined
         expect(result.length).to.equal(0)
     })
 

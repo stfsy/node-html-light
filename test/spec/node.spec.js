@@ -371,7 +371,7 @@ describe('Node', () => {
         const head = Node.fromString(string)
 
         expect(head.name).to.equal('head')
-        expect(head.attributes).to.be.defined
+        expect(head.attributes).not.to.be.undefined
     })
 
     it('should append a text node', () => {
