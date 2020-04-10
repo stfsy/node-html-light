@@ -20,7 +20,7 @@ describe('Text', () => {
 
         const textNode = Text.of('ABCDEFGH').get()
 
-        for(let key in parsed) {
+        for(let key in textNode) {
 
             expect(textNode[key]).to.equal(parsed[key])
         } 
