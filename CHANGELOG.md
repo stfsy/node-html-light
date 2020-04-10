@@ -1,3 +1,13 @@
+# [1.3.0](https://github.com/stfsy/node-html-light/compare/v1.1.0...v1.3.0) (2020-04-10)
+
+
+### Features
+
+* update dependencies ([793cc27](https://github.com/stfsy/node-html-light/commit/793cc27abc552b114a73223010697e5931d3536e))
+* update htmlparser2 ([cbf0caf](https://github.com/stfsy/node-html-light/commit/cbf0cafae02ad53507dd44a4371465816a0420e4))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/stfsy/node-html-light/compare/v1.1.0...v1.2.0) (2020-03-22)
 
