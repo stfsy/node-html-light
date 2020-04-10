@@ -10,5 +10,6 @@ npm test
 git add *package*
 git commit -m "feat: update dependencies"
 npm run release-minor
+./publish-docs
 git checkout dev || true
 git rebase master
