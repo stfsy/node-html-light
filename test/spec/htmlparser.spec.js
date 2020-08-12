@@ -142,4 +142,12 @@ describe('HtmlParser', () => {
         const html = domUtils.getInnerHTML(p[0])
         expect(html).to.contain('div')
     })
+
+    it('should parse multiline comments as one node', () => {
+        const comment = htmlParser.parseDOM(`<!-- @amy import b.html forEach a.b.c.e 
+                    and add c.html with def
+        `)
+
+        expect(comment.length).to.equal(1)
+    })
 })
