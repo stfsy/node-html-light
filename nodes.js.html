@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>nodes.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
@@ -23,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="node-html-light.Attribute.html">Attribute</a></li><li><a href="node-html-light.Attributes.html">Attributes</a><ul class='methods'><li data-type='method'><a href="node-html-light.Attributes.html#.fromObject">fromObject</a></li></ul></li><li><a href="node-html-light.Document.html">Document</a><ul class='methods'><li data-type='method'><a href="node-html-light.Document.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Document.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Document.html#body">body</a></li><li data-type='method'><a href="node-html-light.Document.html#head">head</a></li><li data-type='method'><a href="node-html-light.Document.html#html">html</a></li></ul></li><li><a href="node-html-light.Node.html">Node</a><ul class='methods'><li data-type='method'><a href="node-html-light.Node.html#.create">create</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Node.html#append">append</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChild">appendChild</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildAfter">appendChildAfter</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildBefore">appendChildBefore</a></li><li data-type='method'><a href="node-html-light.Node.html#attribute">attribute</a></li><li data-type='method'><a href="node-html-light.Node.html#attributes">attributes</a></li><li data-type='method'><a href="node-html-light.Node.html#find">find</a></li><li data-type='method'><a href="node-html-light.Node.html#name">name</a></li><li data-type='method'><a href="node-html-light.Node.html#removeAll">removeAll</a></li><li data-type='method'><a href="node-html-light.Node.html#removeFirst">removeFirst</a></li><li data-type='method'><a href="node-html-light.Node.html#replaceChild">replaceChild</a></li><li data-type='method'><a href="node-html-light.Node.html#toHtml">toHtml</a></li></ul></li><li><a href="node-html-light.Nodes.html">Nodes</a><ul class='methods'><li data-type='method'><a href="node-html-light.Nodes.html#.fromArray">fromArray</a></li><li data-type='method'><a href="node-html-light.Nodes.html#find">find</a></li><li data-type='method'><a href="node-html-light.Nodes.html#forEach">forEach</a></li></ul></li><li><a href="node-html-light.Text.html">Text</a><ul class='methods'><li data-type='method'><a href="node-html-light.Text.html#.fromString">fromString</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="node-html-light.html">node-html-light</a></li></ul>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="node-html-light.Attributes.html">Attributes</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="node-html-light.Attributes.html#.of">of</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="node-html-light.Text.html">Text</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="node-html-light.Text.html#.of">of</a></span></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="node-html-light.html">node-html-light</a></span></li>
 </nav>
 
 <div id="main">
@@ -53,7 +54,7 @@ class Nodes {
      * @param {Array&lt;Node>} elems an array of nodes
      * @returns {Node} a new Node
      */
-    static fromArray(elems) {
+    static of(elems) {
         return new Nodes(elems)
     }
 
@@ -70,7 +71,7 @@ class Nodes {
 
     /**
       * Returns an array of nodes matching tag name and attributes
-      * @param {Object} element an object whos properties reflect the properties of the element we are looking for
+      * @param {Object} element an object whose properties reflect the properties of the element we are looking for
       * @param {Array&lt;Attribute>} [attrs=empty] attrs an array of attributes
       * @param {Number} [limit=Infinity] limit the max number of results
       * @returns {Array&lt;Node>}
@@ -108,7 +109,7 @@ class Nodes {
 
             // iterating recursively we have to wrap the parser nodes with our node implementation
             if (!(element instanceof Node)) {
-                element = Node.create(element)
+                element = Node.of(element)
             }
 
             const type = element.get().type
@@ -153,7 +154,7 @@ module.exports = Nodes</code></pre>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

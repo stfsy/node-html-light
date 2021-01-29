@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Home - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
@@ -23,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="node-html-light.Attribute.html">Attribute</a></li><li><a href="node-html-light.Attributes.html">Attributes</a><ul class='methods'><li data-type='method'><a href="node-html-light.Attributes.html#.fromObject">fromObject</a></li></ul></li><li><a href="node-html-light.Document.html">Document</a><ul class='methods'><li data-type='method'><a href="node-html-light.Document.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Document.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Document.html#body">body</a></li><li data-type='method'><a href="node-html-light.Document.html#head">head</a></li><li data-type='method'><a href="node-html-light.Document.html#html">html</a></li></ul></li><li><a href="node-html-light.Node.html">Node</a><ul class='methods'><li data-type='method'><a href="node-html-light.Node.html#.create">create</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Node.html#append">append</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChild">appendChild</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildAfter">appendChildAfter</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildBefore">appendChildBefore</a></li><li data-type='method'><a href="node-html-light.Node.html#attribute">attribute</a></li><li data-type='method'><a href="node-html-light.Node.html#attributes">attributes</a></li><li data-type='method'><a href="node-html-light.Node.html#find">find</a></li><li data-type='method'><a href="node-html-light.Node.html#name">name</a></li><li data-type='method'><a href="node-html-light.Node.html#removeAll">removeAll</a></li><li data-type='method'><a href="node-html-light.Node.html#removeFirst">removeFirst</a></li><li data-type='method'><a href="node-html-light.Node.html#replaceChild">replaceChild</a></li><li data-type='method'><a href="node-html-light.Node.html#toHtml">toHtml</a></li></ul></li><li><a href="node-html-light.Nodes.html">Nodes</a><ul class='methods'><li data-type='method'><a href="node-html-light.Nodes.html#.fromArray">fromArray</a></li><li data-type='method'><a href="node-html-light.Nodes.html#find">find</a></li><li data-type='method'><a href="node-html-light.Nodes.html#forEach">forEach</a></li></ul></li><li><a href="node-html-light.Text.html">Text</a><ul class='methods'><li data-type='method'><a href="node-html-light.Text.html#.fromString">fromString</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="node-html-light.html">node-html-light</a></li></ul>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="node-html-light.Attributes.html">Attributes</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="node-html-light.Attributes.html#.of">of</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="node-html-light.Text.html">Text</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="node-html-light.Text.html#.of">of</a></span></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="node-html-light.html">node-html-light</a></span></li>
 </nav>
 
 <div id="main">
@@ -47,7 +48,8 @@
 
 
     <section class="readme">
-        <article><h1>Node HTML Light</h1><p><a href="https://travis-ci.org/stfsy/node-html-light"><img src="https://travis-ci.org/stfsy/node-html-light.svg" alt="Build Status"></a>
+        <article><h1>Node HTML Light</h1>
+<p><a href="https://travis-ci.org/stfsy/node-html-light"><img src="https://travis-ci.org/stfsy/node-html-light.svg" alt="Build Status"></a>
 <a href="https://github.com/stfsy/node-html-light/blob/master/package.json"><img src="https://img.shields.io/david/stfsy/node-html-light.svg" alt="Dependency Status"></a>
 <a href="https://github.com/stfsy/node-html-light/blob/master/package.json"><img src="https://img.shields.io/david/dev/stfsy/node-html-light.svg" alt="DevDependency Status"></a>
 <a href="https://www.npmjs.com/package/node-html-light"><img src="https://img.shields.io/npm/dm/node-html-light.svg" alt="Npm downloads"></a>
@@ -55,12 +57,93 @@
 <a href="https://github.com/stfsy/node-html-light/releases"><img src="https://img.shields.io/github/tag/stfsy/node-html-light.svg" alt="Git tag"></a>
 <a href="https://github.com/stfsy/node-html-light/issues"><img src="https://img.shields.io/github/issues/stfsy/node-html-light.svg" alt="Github issues"></a>
 <a href="https://github.com/stfsy/node-html-light/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/node-html-light.svg" alt="License"></a></p>
-<p>Wrapper around htmlparser2 providing a more object oriented interface</p>
-<h2>Examples</h2><h3>Creating a document using a file</h3><pre class="prettyprint source lang-js"><code>const Document = require('node-html-light').Document
+<p>HTML Parser for NodeJS providing a lightweight object oriented interface</p>
+<ul>
+<li><a href="#api">API</a>
+<ul>
+<li><a href="#document">Document</a></li>
+<li><a href="#node">Node</a></li>
+<li><a href="#attributes">Attributes</a></li>
+<li><a href="#text">Text</a></li>
+</ul>
+</li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#create-a-document-using-a-file">Create a document using a file</a></li>
+<li><a href="#create-a-node-using-a-file">Create a Node using a File</a></li>
+<li><a href="#create-a-node-using-a-string">Create a Node using a String</a></li>
+<li><a href="#create-a-node-with-raw-data">Create a Node with raw data</a></li>
+<li><a href="#find-a-child-node-of-an-existing-element">Find a child Node of an existing Element</a></li>
+</ul>
+</li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2>How can I install it?</h2>
+<pre class="prettyprint source lang-js"><code>npm i node-html-light --save
+</code></pre>
+<h2>Who is using it?</h2>
+<p><a href="https://www.blauspecht.io">blauspecht.io</a> uses <code>node-html-light</code> to render their whole page server-side. <a href="https://www.blauspecht.io">blauspecht.io</a> enables you to provide rich content to your followers, schedule tweets and threads and will add AI-powered features soon.</p>
+<h2>How can I use it?</h2>
+<h3>Document</h3>
+<h4>Class methods</h4>
+<ul>
+<li>static <strong>fromPath</strong>(path) -&gt; <a href="#document">Document</a></li>
+<li>static <strong>fromString</strong>(string) -&gt; <a href="#document">Document</a></li>
+</ul>
+<h4>Instance properties</h4>
+<ul>
+<li>name</li>
+<li>parent</li>
+<li>attributes</li>
+</ul>
+<h4>Instance methods</h4>
+<ul>
+<li><strong>html</strong>() -&gt; <a href="#node">Node</a></li>
+<li><strong>head</strong>() -&gt; <a href="#node">Node</a></li>
+<li><strong>body</strong>() -&gt; <a href="#node">Node</a></li>
+<li><strong>toHtml</strong>() -&gt; String</li>
+</ul>
+<h3>Node</h3>
+<h4>Class methods</h4>
+<ul>
+<li>static <strong>fromPath</strong>(path) -&gt; <a href="#node">Node</a> | Array&lt;<a href="#node">Node</a>&gt;</li>
+<li>static <strong>fromString</strong>(string) -&gt; <a href="#node">Node</a> | Array&lt;<a href="#node">Node</a>&gt;</li>
+<li>static <strong>of</strong>(object | name, attrs) -&gt; <a href="#node">Node</a> | Array&lt;<a href="#node">Node</a>&gt;</li>
+</ul>
+<h4>Instance properties</h4>
+<ul>
+<li>name</li>
+<li>parent</li>
+<li>attributes</li>
+</ul>
+<h4>Instance methods</h4>
+<ul>
+<li><strong>appendChild</strong>(newChild) -&gt; void</li>
+<li><strong>appendChildBefore</strong>(newChild, oldChild) -&gt; void</li>
+<li><strong>appendChildAfter</strong>(newChild, oldChild) -&gt; void</li>
+<li><strong>find</strong>(element, attrs, limit) -&gt; Array&lt;<a href="#node">Node</a>&gt;</li>
+<li><strong>replaceChild</strong>(newChild, oldChild) -&gt; void</li>
+<li><strong>toHtml</strong>() -&gt; String</li>
+</ul>
+<h3>Attributes</h3>
+<h4>Class methods</h4>
+<ul>
+<li>static <strong>of</strong>(object) -&gt; Array<Attribute></li>
+</ul>
+<h3>Text</h3>
+<h4>Class methods</h4>
+<ul>
+<li>static <strong>of</strong>(string) -&gt; <a href="#text">Text</a></li>
+</ul>
+<h2>Examples</h2>
+<h3>Create a document using a file</h3>
+<pre class="prettyprint source lang-js"><code>const Document = require('node-html-light').Document
 const resolve = require('path').resolve
 
-Document.fromPath(resolve('index.html')).then((document) => {
+Document.fromPath(resolve('./index.html')).then((document) => {
+    // head is an instance of Node
     const head = document.head()
+    // body is an instance of Node
     const body = document.body()
 
     // find child elements
@@ -71,26 +154,43 @@ Document.fromPath(resolve('index.html')).then((document) => {
     return document.toHtml()
 }).then((html) => {
     // ..
-})</code></pre><h3>Creating a Node using a File</h3><pre class="prettyprint source lang-js"><code>const Node = require('node-html-light').Node
+})
+</code></pre>
+<h3>Create a Node using a File</h3>
+<pre class="prettyprint source lang-js"><code>const Node = require('node-html-light').Node
 const resolve = require('path').resolve
 
-Node.fromPath(resolve('partial.html')).then((node) => {})</code></pre><h3>Creating a Node using a String</h3><pre class="prettyprint source lang-js"><code>const Node = require('node-html-light').Node
+Node.fromPath(resolve('partial.html')).then((node) => {})
+</code></pre>
+<h3>Create a Node using a String</h3>
+<pre class="prettyprint source lang-js"><code>const Node = require('node-html-light').Node
 
-const node = Node.fromString('&lt;div>&lt;/div>')</code></pre><h3>Creating a raw Node</h3><pre class="prettyprint source lang-js"><code>const Node = require('node-html-light').Node
-const Attribute = require('node-html-light').Attribute
+const node = Node.fromString('&lt;div>&lt;/div>')
+</code></pre>
+<h3>Create a Node with raw data</h3>
+<pre class="prettyprint source lang-js"><code>const Node = require('node-html-light').Node
+const Attributes = require('node-html-light').Attributes
 
-const node = Node.create('meta', [
-    new Attribute('name', 'viewport'),
-    new Attribute('theme-color', '#795548')
-])</code></pre><h3>Finding a child Node</h3><pre class="prettyprint source lang-js"><code>const Node = require('node-html-light').Node
-const Attribute = require('node-html-light').Attribute
+const node = Node.of('meta', Attributes.of({
+        'name': 'viewport',
+        'theme-color': '#795548'
+    })
+)
+</code></pre>
+<h3>Find a child Node of an existing Element</h3>
+<pre class="prettyprint source lang-js"><code>const Node = require('node-html-light').Node
+const Attributes = require('node-html-light').Attributes
 const resolve = require('path').resolve
 
 Node.fromPath(resolve('partial.html')).then((node) => {
-    const content = node.find('div', [
-        new Attribute('id', 'content')
-    ])
-})</code></pre><h2>Installation</h2><pre class="prettyprint source lang-js"><code>npm install node-html-light --save</code></pre><h2>License</h2><p>This project is distributed under the MIT license.</p></article>
+    const content = node.find('div', Attributes.of({
+        'name': 'viewport',
+        'theme-color': '#795548'
+    }))
+})
+</code></pre>
+<h2>License</h2>
+<p>This project is distributed under the MIT license.</p></article>
     </section>
 
 
@@ -103,7 +203,7 @@ Node.fromPath(resolve('partial.html')).then((node) => {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

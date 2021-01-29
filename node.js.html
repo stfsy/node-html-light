@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>node.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
@@ -23,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="node-html-light.Attribute.html">Attribute</a></li><li><a href="node-html-light.Attributes.html">Attributes</a><ul class='methods'><li data-type='method'><a href="node-html-light.Attributes.html#.fromObject">fromObject</a></li></ul></li><li><a href="node-html-light.Document.html">Document</a><ul class='methods'><li data-type='method'><a href="node-html-light.Document.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Document.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Document.html#body">body</a></li><li data-type='method'><a href="node-html-light.Document.html#head">head</a></li><li data-type='method'><a href="node-html-light.Document.html#html">html</a></li></ul></li><li><a href="node-html-light.Node.html">Node</a><ul class='methods'><li data-type='method'><a href="node-html-light.Node.html#.create">create</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromPath">fromPath</a></li><li data-type='method'><a href="node-html-light.Node.html#.fromString">fromString</a></li><li data-type='method'><a href="node-html-light.Node.html#append">append</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChild">appendChild</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildAfter">appendChildAfter</a></li><li data-type='method'><a href="node-html-light.Node.html#appendChildBefore">appendChildBefore</a></li><li data-type='method'><a href="node-html-light.Node.html#attribute">attribute</a></li><li data-type='method'><a href="node-html-light.Node.html#attributes">attributes</a></li><li data-type='method'><a href="node-html-light.Node.html#find">find</a></li><li data-type='method'><a href="node-html-light.Node.html#name">name</a></li><li data-type='method'><a href="node-html-light.Node.html#removeAll">removeAll</a></li><li data-type='method'><a href="node-html-light.Node.html#removeFirst">removeFirst</a></li><li data-type='method'><a href="node-html-light.Node.html#replaceChild">replaceChild</a></li><li data-type='method'><a href="node-html-light.Node.html#toHtml">toHtml</a></li></ul></li><li><a href="node-html-light.Nodes.html">Nodes</a><ul class='methods'><li data-type='method'><a href="node-html-light.Nodes.html#.fromArray">fromArray</a></li><li data-type='method'><a href="node-html-light.Nodes.html#find">find</a></li><li data-type='method'><a href="node-html-light.Nodes.html#forEach">forEach</a></li></ul></li><li><a href="node-html-light.Text.html">Text</a><ul class='methods'><li data-type='method'><a href="node-html-light.Text.html#.fromString">fromString</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="node-html-light.html">node-html-light</a></li></ul>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="node-html-light.Attributes.html">Attributes</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="node-html-light.Attributes.html#.of">of</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="node-html-light.Text.html">Text</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="node-html-light.Text.html#.of">of</a></span></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="node-html-light.html">node-html-light</a></span></li>
 </nav>
 
 <div id="main">
@@ -39,8 +40,6 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>'use strict'
-
-const Attribute = require('./attribute')
 
 const htmlParser = require('htmlparser2')
 const domUtils = htmlParser.DomUtils
@@ -109,7 +108,7 @@ class Node {
      * @param {Array.&lt;Attribute>} [attrs=empty] attrs an array of attributes
      * @returns {Node} a new Node
      */
-    static create(tag, attrs) {
+    static of(tag, attrs) {
 
         if (tag instanceof Node) {
             return tag
@@ -168,7 +167,6 @@ class Node {
      * @returns {Object} htmlparser2's representation of a html node
      */
     get() {
-
         return this._element
     }
 
@@ -176,41 +174,42 @@ class Node {
      * Returns the name of this node
      * @returns {string}
      */
-    name() {
-
+    get name() {
         return this.get().name
     }
 
+    
     /**
-      * Returns or sets the attribute for the given key and value
-      * @param {string|Attribute} attr a key for getting an attribute or an attribute for setting the attribute on this node
-      * @returns {Attribute}
-      */
-    attribute(attr) {
-        const attributes = this.get().attribs
-
-        if (typeof attr === 'string') {
-            return new Attribute(attr, attributes[attr])
-        } else if (typeof attr === 'object') {
-            attributes[attr.key] = attr.value
-        }
-
-        return new Attribute(attr.key, attr.value)
+     * Returns the type of this node
+     * @see node-html-light.Node.TYPE_COMMENT
+     * @see node-html-light.Node.TYPE_TAG
+     * @see node-html-light.Node.TYPE_TEXT
+     * @returns {string}
+     */
+    get type() {
+        return this.get().type
     }
 
     /**
-       * Returns all attributes of this node
-       * @returns {Array.&lt;Attribute>}
-       */
-    attributes() {
-        const attributes = this.get().attribs
-        const array = []
+     * Returns the parent node of this node
+     * @returns {Node}
+     */
+    get parent() {
+        const parent = this.get().parent
 
-        for (let key in attributes) {
-            array.push(new Attribute(key, attributes[key]))
+        if (!parent) {
+            return null
         }
 
-        return array
+        return new Node(parent)
+    }
+
+    /**
+       * Returns all attributes of this node. The returned object is live, so you can add or remove attributes as you wish
+       * @returns {Object}
+       */
+    get attributes() {
+        return this.get().attribs
     }
 
     /**
@@ -249,89 +248,25 @@ class Node {
     }
 
     /**
-      * Removes the first child node with matching tag name and attributes
-      * @param {string} tag the tag to look for
-      * @param {Array&lt;Attribute>} [attrs=empty] attrs an array of attributes
+      * Removes a child node
+      * @param {Node|Array&lt;Node>} child the child node to remove
       * @returns {this}
       */
-    removeFirst(tag, attrs) {
-        const elements = domUtils.filter((element) => {
-
-            let found = true
-
-            if (attrs) {
-                found = attrs.find((attr) => {
-                    return element.attribs[attr.key] === attr.value
-                })
-            }
-
-            return found &amp;&amp; element.name === tag
-        }, this._element, true, 1)
-
-        domUtils.removeElement(elements[0])
-
-        return this
-    }
-
-    /**
-      * Removes all child nodes with matching tag name and attributes
-      * @param {string} tag the tag to look for
-      * @param {Array&lt;Attribute>} [attrs=empty] attrs an array of attributes
-      * @returns {this}
-      */
-    removeAll(tag, attrs) {
-        const elements = domUtils.filter((element) => {
-
-            let found = true
-
-            if (attrs) {
-                found = attrs.find((attr) => {
-                    return element.attribs[attr.key] === attr.value
-                })
-            }
-
-            return found &amp;&amp; element.name === tag
-        }, this._element, true)
-
-        elements.forEach((element) => {
-            domUtils.removeElement(element)
-        })
-
-        return this
+    removeChild(child) {
+        if (Array.isArray(child)) {
+            child.forEach(element => domUtils.removeElement(element.get()))
+        } else {
+            domUtils.removeElement(child.get())
+        }
     }
 
     /**
       * Appends a node to this node's children
-      * @param {Node} node the node to be appended
+      * @param {Node} newChild the node to be appended
       * @returns {this}
       */
-    appendChild(node) {
-        domUtils.appendChild(this._element, node.get())
-
-        return this
-    }
-
-    /**
-      * Add a node as this nodes next sibling
-      * @param {nextNode} node the node to be added
-      * @returns {this}
-      */
-    append(nextNode) {
-        domUtils.append(this._element, nextNode.get())
-
-        return this
-    }
-
-    /**
-      * Replaces a child element with a new child
-      * @param {Node} newChild the new Child
-      * @param {Node} oldChild the old Child to be replaced
-      * @returns {this}
-      */
-    replaceChild(newChild, oldChild) {
-        domUtils.replaceElement(oldChild.get(), newChild.get())
-
-        return this
+    appendChild(newChild) {
+        domUtils.appendChild(this._element, newChild.get())
     }
 
     /**
@@ -342,8 +277,6 @@ class Node {
       */
     appendChildBefore(newChild, existingChild) {
         domUtils.prepend(existingChild.get(), newChild.get())
-
-        return this
     }
 
     /**
@@ -354,8 +287,16 @@ class Node {
       */
     appendChildAfter(newChild, existingChild) {
         domUtils.append(existingChild.get(), newChild.get())
+    }
 
-        return this
+    /**
+      * Replaces a child element with a new child
+      * @param {Node} newChild the new Child
+      * @param {Node} existingChild the existing Child to be replaced
+      * @returns {this}
+      */
+    replaceChild(newChild, existingChild) {
+        domUtils.replaceElement(existingChild.get(), newChild.get())
     }
 
     /**
@@ -363,7 +304,6 @@ class Node {
     * @returns {string} 
     */
     toHtml() {
-
         return domUtils.getOuterHTML(this._element)
     }
 }
@@ -380,7 +320,7 @@ module.exports = Node</code></pre>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
