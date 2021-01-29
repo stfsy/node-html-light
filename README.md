@@ -24,13 +24,16 @@ HTML Parser for NodeJS providing a lightweight object oriented interface
     - [Find a child Node of an existing Element](#find-a-child-node-of-an-existing-element)
 - [License](#license)
 
-### Installation
+## How can I install it?
 
 ```js
 npm i node-html-light --save
 ```
 
-## API
+## Who is using it?
+[blauspecht.io](https://www.blauspecht.io) uses `node-html-light` to render their whole page server-side. [blauspecht.io](https://www.blauspecht.io) enables you to provide rich content to your followers, schedule tweets and threads and will add AI-powered features soon.
+
+## How can I use it?
 
 ### Document
 #### Class methods
