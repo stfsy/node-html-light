@@ -59,8 +59,9 @@ describe('Document', () => {
         Document.fromPath(resolve('test/withMeta.html')).then((document) => {
             const head = document.head().get()
             const length = head.children.length
+            const metaTags = document.head().find('meta')
 
-            document.head().removeChild('meta', null, Infinity)
+            document.head().removeChild(metaTags)
 
             expect(head.children.length).to.equal(length - 4)
         }).then(done, done)
@@ -71,8 +72,9 @@ describe('Document', () => {
         Document.fromPath(resolve('test/withBody.html')).then((document) => {
             const body = document.body().get()
             const length = body.children.length
+            const roomOverview = document.body().find('room-overview')
 
-            document.body().removeChild('room-overview')
+            document.body().removeChild(roomOverview)
 
             expect(body.children.length).to.equal(length - 1)
         }).then(done, done)
