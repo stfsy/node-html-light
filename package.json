@@ -54,6 +54,6 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
-    "htmlparser2": "^6.0.0"
+    "htmlparser2": "^5.0.0"
   }
 }
