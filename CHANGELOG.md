@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/stfsy/node-html-light/compare/v1.4.0...v2.0.0) (2021-01-29)
+
+
+### Features
+
+* remove nodes without previous lookup ([bd0ec3a](https://github.com/stfsy/node-html-light/commit/bd0ec3ad6d0fb609c5508a95e37ec3e9e67c2cff))
+* update dependencies ([05d7df9](https://github.com/stfsy/node-html-light/commit/05d7df97eddd57390517b29c4192cc3116811bd0))
+
+
+
 # [1.4.0](https://github.com/stfsy/node-html-light/compare/v1.1.0...v1.4.0) (2020-10-15)
 
 

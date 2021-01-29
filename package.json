@@ -1,6 +1,6 @@
 {
   "name": "node-html-light",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "HTML Parser for NodeJS providing a lightweight object oriented interface",
   "main": "lib/index.js",
   "scripts": {
