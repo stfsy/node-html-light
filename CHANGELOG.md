@@ -1,3 +1,13 @@
+# [2.1.0](https://github.com/stfsy/node-html-light/compare/v2.0.0...v2.1.0) (2021-02-03)
+
+
+### Features
+
+* add getter for next sibling ([9c3d141](https://github.com/stfsy/node-html-light/commit/9c3d1410f3e36b219692ccd35334e3f59b99aae6))
+* add getter for previous sibling of node ([eccde43](https://github.com/stfsy/node-html-light/commit/eccde438ca3a33c6e7158b03f3726cb1ac5e7868))
+
+
+
 # [2.0.0](https://github.com/stfsy/node-html-light/compare/v1.4.0...v2.0.0) (2021-01-29)
 
 
