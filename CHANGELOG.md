@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/stfsy/node-html-light/compare/v2.1.0...v2.2.0) (2021-02-03)
+
+
+### Features
+
+* update html parser to 5.0.1 ([a5abbf5](https://github.com/stfsy/node-html-light/commit/a5abbf51cefd0b4183633844ca46963e08d64187))
+
+
+
 # [2.1.0](https://github.com/stfsy/node-html-light/compare/v2.0.0...v2.1.0) (2021-02-03)
 
 
