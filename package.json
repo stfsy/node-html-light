@@ -7,7 +7,7 @@
     "test-watch": "watch \"npm run test\" test/spec lib",
     "test": "mocha test/spec --check-leaks",
     "nlv": "node-license-validator --allow-licenses WTFPL ISC MIT Apache-2.0 --allow-packages  domelementtype domhandler domutils entities --production --deep",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- test/spec --check-leaks",
+    "coverage": "nyc npm run test",
     "docs": "jsdoc lib --destination docs --configure .jsdoc.json --readme README.md ",
     "preversion": "npm run nlv && npm run test",
     "version": "npm run changelog && git add -A CHANGELOG.md",
@@ -46,7 +46,6 @@
     "chai-spies": "^1.0.0",
     "conventional-changelog-cli": "^2.1.1",
     "fs-promise": "^2.0.2",
-    "istanbul": "^0.4.4",
     "jsdoc": "^3.6.6",
     "minami": "^1.1.1",
     "mocha": "^8.2.1",
@@ -54,6 +53,7 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
-    "htmlparser2": "^5.0.0"
+    "htmlparser2": "^5.0.0",
+    "nyc": "^15.1.0"
   }
 }
