@@ -3,3 +3,5 @@ coverage/
 docs/
 npm-debug.log
 .tmp
+
+.nyc_output
