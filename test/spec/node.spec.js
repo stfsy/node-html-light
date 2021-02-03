@@ -328,6 +328,15 @@ describe('Node', () => {
         expect(head.attributes).not.to.be.undefined
     })
 
+    it('should return the previous node', () => {
+        const div = Node.fromString('<div></div>')
+        const p = Node.fromString('<p></p>')
+        const span = Node.fromString('<span></span>')
+        div.appendChild(p)
+        div.appendChild(span)
+
+        expect(span.previousSibling.name).to.equal('p')
+    })
     it('should append a text node', () => {
         const node = Node.fromString('<div></div>')
         node.appendChild(Text.of('eins'))
