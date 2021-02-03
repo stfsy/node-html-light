@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "HTML Parser for NodeJS providing a lightweight object oriented interface",
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test-watch": "watch \"npm run test\" test/spec lib",
     "test": "mocha test/spec --check-leaks",
