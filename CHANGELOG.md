@@ -1,3 +1,12 @@
+# [2.3.0](https://github.com/stfsy/node-html-light/compare/v2.2.0...v2.3.0) (2021-02-09)
+
+
+### Features
+
+* update outdated dependencies ([062de60](https://github.com/stfsy/node-html-light/commit/062de6097e2a7870fdb3538f24b1c2f58a00ab3b))
+
+
+
 # [2.2.0](https://github.com/stfsy/node-html-light/compare/v2.1.0...v2.2.0) (2021-02-03)
 
 
