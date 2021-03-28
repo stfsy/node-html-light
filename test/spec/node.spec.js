@@ -397,6 +397,22 @@ describe('Node', () => {
         expect(node.get().name).to.equal('meta')
         expect(node.get().attribs.name).to.equal('viewport')
     })
+    it('should find a script node without type argument', () => {
+
+        const parsed = htmlParser.parseDOM([
+            '<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '<script>Hello World</script>',
+            '</head>'
+        ].join(''))
+
+        const node = new Node(parsed).find('script')[0]
+        console.log(node.get())
+        expect(node.get().children[0].data).to.equal('Hello World')
+    })
 
     it('should append a new element after a given current element', (done) => {
         Node.fromPath(resolve('test/withMeta.html')).then((node) => {
