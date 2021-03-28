@@ -1,3 +1,17 @@
+# [2.4.0](https://github.com/stfsy/node-html-light/compare/v2.2.0...v2.4.0) (2021-03-28)
+
+
+### Bug Fixes
+
+* cannot find script elms if no type is given ([b8586a0](https://github.com/stfsy/node-html-light/commit/b8586a07b8b1af343453c6262a951b6d66588508))
+
+
+### Features
+
+* update outdated dependencies ([062de60](https://github.com/stfsy/node-html-light/commit/062de6097e2a7870fdb3538f24b1c2f58a00ab3b))
+
+
+
 # [2.3.0](https://github.com/stfsy/node-html-light/compare/v2.2.0...v2.3.0) (2021-02-09)
 
 
