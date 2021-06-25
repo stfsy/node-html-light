@@ -1,3 +1,13 @@
+# [2.6.0](https://github.com/stfsy/node-html-light/compare/v2.4.0...v2.6.0) (2021-06-25)
+
+
+### Features
+
+*  update htmlparser2 ([a61b450](https://github.com/stfsy/node-html-light/commit/a61b4508b310a9cf122032dbe07e36a84582827b))
+* update outdated dependencies ([043d841](https://github.com/stfsy/node-html-light/commit/043d8414dd6d8f884c35522e36e8e6c71f341a6d))
+
+
+
 # [2.5.0](https://github.com/stfsy/node-html-light/compare/v2.4.0...v2.5.0) (2021-05-13)
 
 
