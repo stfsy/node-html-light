@@ -2,7 +2,6 @@
 
 const htmlParser = require('htmlparser2')
 const domUtils = htmlParser.DomUtils
-
 const expect = require('chai').expect
 const resolve = require('path').resolve
 
@@ -123,26 +122,7 @@ describe('HtmlParser', () => {
         expect(parsed[0].children[3].parent).to.equal(parsed[0])
     })
 
-    it('should not link root elements to parents', () => {
-        const parsed = htmlParser.parseDOM(`<div>
-          <!-- @amy import a.html with a.b.c.d -->
-          <!-- @amy import b.html forEach a.b.c.e -->
-        </div>`)
-
-        expect(parsed[0].parent).to.equal(null)
-    })
-
-    it('should append a node to a comment', () => {
-        const p = htmlParser.parseDOM('<p></p>')
-        const comment = htmlParser.parseDOM('<!-- @amy import b.html forEach a.b.c.e -->')
-        const node = htmlParser.parseDOM(`<div></div>`)
-
-        domUtils.appendChild(p[0], comment[0])
-        domUtils.append(comment[0], node[0])
-        const html = domUtils.getInnerHTML(p[0])
-        expect(html).to.contain('div')
-    })
-
+   
     it('should parse multiline comments as one node', () => {
         const comment = htmlParser.parseDOM(`<!-- @amy import b.html forEach a.b.c.e 
                     and add c.html with def
