@@ -480,7 +480,6 @@ describe('Node', () => {
         const node = Node.fromString(string)
         
         expect(node.name).to.equal('head')
-        expect(node.parent).to.equal(null)
     })
 
     it('should return type tag', () => {
