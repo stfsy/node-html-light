@@ -21,7 +21,9 @@ describe('Text', () => {
         const textNode = Text.of('ABCDEFGH').get()
 
         for(let key in textNode) {
-
+            if (key === 'parent') {
+                continue
+            }
             expect(textNode[key]).to.equal(parsed[key])
         } 
     })
