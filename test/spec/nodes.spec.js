@@ -63,6 +63,11 @@ describe('Nodes', () => {
         }, true)
         expect(index).to.equal(4)
     })
+    it('should invoke the callback with current index', () => {
+        nodes.forEach((_, i) => {
+            expect(i).to.not.be.undefined
+        }, true)
+    })
     it('should invoke the callback function 3 times', () => {
         let index = 0
         anotherNodes.forEach(() => {
