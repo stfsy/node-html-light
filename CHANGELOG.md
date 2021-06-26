@@ -1,3 +1,12 @@
+# [2.7.0](https://github.com/stfsy/node-html-light/compare/v2.6.0...v2.7.0) (2021-06-26)
+
+
+### Features
+
+* pass index to forEach callback ([ecf7fe9](https://github.com/stfsy/node-html-light/commit/ecf7fe9885561ef7a65b311650e8e9340c7b9e08))
+
+
+
 # [2.6.0](https://github.com/stfsy/node-html-light/compare/v2.4.0...v2.6.0) (2021-06-25)
 
 
