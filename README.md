@@ -67,6 +67,8 @@ npm i node-html-light --save
 - **appendChildBefore**(newChild, oldChild) -> void
 - **appendChildAfter**(newChild, oldChild) -> void
 - **find**(element, attrs, limit) -> Array<[Node](#node)>
+- **filter**(callback, limit) -> Array<[Node](#node)>
+- **removeChild**(child) -> void
 - **replaceChild**(newChild, oldChild) -> void
 - **toHtml**() -> String
 
