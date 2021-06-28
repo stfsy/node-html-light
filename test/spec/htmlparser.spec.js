@@ -130,4 +130,16 @@ describe('HtmlParser', () => {
 
         expect(comment.length).to.equal(1)
     })
+
+    it('should parse style elements', () => {
+        const style = htmlParser.parseDOM(`<style></style>`)[0]
+        expect(style.name).to.equal('style')
+        expect(style.type).to.equal('style')
+    })
+
+    it('should parse script elements', () => {
+        const script = htmlParser.parseDOM(`<script></script>`)[0]
+        expect(script.name).to.equal('script')
+        expect(script.type).to.equal('script')
+    })
 })
