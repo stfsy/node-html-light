@@ -10,6 +10,37 @@ const resolve = require('path').resolve
 
 describe('Node', () => {
 
+    it('should callback for each node and childnodes', () => {
+        const node = Node.fromString(['<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'].join(''))
+
+        let count = 0
+        node.filter((el) => {
+            count += 1
+        })
+        expect(count).to.be.equal(5)
+    })
+
+    it('returns children when callback returned true', () => {
+        const node = Node.fromString(['<head>',
+            '<meta content="" name="description">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'].join(''))
+
+        const result = node.filter((el) => {
+            return el.name === 'title'
+        })
+        expect(result).to.have.length(1)
+        expect(result[0].name).to.be.equal('title')
+    })
+
+
     it('should return a single node', () => {
         const string = '<meta name="viewport" content="width=device-width, user-scalable=no">'
 
@@ -463,7 +494,7 @@ describe('Node', () => {
         const node = Node.fromString(string)
         const meta = node.find('meta', null, 1)[0]
         const parent = meta.parent
-    
+
         expect(parent.name).to.equal('head')
     })
 
@@ -478,7 +509,7 @@ describe('Node', () => {
         ].join('')
 
         const node = Node.fromString(string)
-        
+
         expect(node.name).to.equal('head')
     })
 
@@ -493,17 +524,17 @@ describe('Node', () => {
         ].join('')
 
         const node = Node.fromString(string)
-        
+
         expect(node.name).to.equal('head')
         expect(node.type).to.equal('tag')
     })
 
-      it('should return type text', () => {
-        const string = [ 'abc'
+    it('should return type text', () => {
+        const string = ['abc'
         ].join('')
 
         const node = Node.fromString(string)
-        
+
         expect(node.type).to.equal('text')
     })
 })
