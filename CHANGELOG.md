@@ -1,3 +1,12 @@
+# [2.8.0](https://github.com/stfsy/node-html-light/compare/v2.7.0...v2.8.0) (2021-06-28)
+
+
+### Features
+
+* add method to file node and childnodes ([6bc7e9d](https://github.com/stfsy/node-html-light/commit/6bc7e9d08c3e3a4b3bc747643d15289e69414134))
+
+
+
 # [2.7.0](https://github.com/stfsy/node-html-light/compare/v2.6.0...v2.7.0) (2021-06-26)
 
 
