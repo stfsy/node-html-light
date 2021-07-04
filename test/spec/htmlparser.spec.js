@@ -142,4 +142,15 @@ describe('HtmlParser', () => {
         expect(script.name).to.equal('script')
         expect(script.type).to.equal('script')
     })
+
+    it('should not encode br tags', () => {
+        const html = htmlParser.parseDOM('<span><br><br></span>')[0]
+        const htmlString = domUtils.getOuterHTML(html)
+        expect(htmlString).to.contain('<br><br>')
+    })
+    it('auto opens br tags', () => {
+        const html = htmlParser.parseDOM('<span><br/><br/></span>')[0]
+        const htmlString = domUtils.getOuterHTML(html)
+        expect(htmlString).to.contain('<br><br>')
+    })
 })
