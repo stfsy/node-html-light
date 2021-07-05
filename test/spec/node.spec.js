@@ -441,7 +441,6 @@ describe('Node', () => {
         ].join(''))
 
         const node = new Node(parsed).find('script')[0]
-        console.log(node.get())
         expect(node.get().children[0].data).to.equal('Hello World')
     })
 
