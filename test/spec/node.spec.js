@@ -536,4 +536,9 @@ describe('Node', () => {
 
         expect(node.type).to.equal('text')
     })
+
+    it('should return type style', () => {
+        const node = Node.fromString('<style></style>')
+        expect(node.type).to.equal(Node.TYPE_STYLE)
+    })
 })
