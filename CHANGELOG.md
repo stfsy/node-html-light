@@ -1,3 +1,17 @@
+## [2.8.1](https://github.com/stfsy/node-html-light/compare/v2.8.0...v2.8.1) (2021-07-05)
+
+
+### Bug Fixes
+
+* some html entities get encoded ([cffd8f1](https://github.com/stfsy/node-html-light/commit/cffd8f13feb86bef3d0aa35ea0b392856071f684))
+
+
+### Features
+
+* use parseDocument instead of parseDom and set default options ([39808b4](https://github.com/stfsy/node-html-light/commit/39808b483ba2ffebdd0a93f25298faf72cb48118))
+
+
+
 # [2.8.0](https://github.com/stfsy/node-html-light/compare/v2.7.0...v2.8.0) (2021-06-28)
 
 
