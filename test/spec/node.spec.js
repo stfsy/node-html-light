@@ -406,8 +406,9 @@ describe('Node', () => {
         expect(node.attributes.id).to.equal('content')
     })
 
-    it('should find a comment node', () => {
-
+    it('parses self closing html tags', () => {
+        const node = Node.fromString('<div></div><span/>')[1]
+        expect(node.name).to.equal('span')
     })
 
     it('should find a node', () => {
