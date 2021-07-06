@@ -1,3 +1,12 @@
+# [2.9.0](https://github.com/stfsy/node-html-light/compare/v2.8.1...v2.9.0) (2021-07-06)
+
+
+### Features
+
+* add type style ([6601d59](https://github.com/stfsy/node-html-light/commit/6601d59349a72ad62fb9f1896ee93200cb54961a))
+
+
+
 ## [2.8.1](https://github.com/stfsy/node-html-light/compare/v2.8.0...v2.8.1) (2021-07-05)
 
 
