@@ -30,6 +30,10 @@ describe('Nodes', () => {
         const anotherNode = Node.fromString(anotherString)
         anotherNodes = Nodes.of(anotherNode)
     })
+    it('parses self closing html tags', () => {
+        const node = Node.fromString('<div></div><span/>')[1]
+        expect(node.name).to.equal('span')
+    })
     it('should find all four meta tags', () => {
         const metas = nodes.find({ name: 'meta', type: Node.TYPE_TAG })
         expect(metas[0].attributes.name).to.equal(undefined)
