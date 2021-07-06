@@ -25,6 +25,40 @@ describe('Node', () => {
         expect(count).to.be.equal(5)
     })
 
+    it('should callback for each node and childnodes by type tag', () => {
+        const node = Node.fromString(['<head>',
+            '<meta content="" name="description">',
+            '<style></style>',
+            '<script></script>',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'].join(''))
+
+        let count = 0
+        node.filterByType((el) => {
+            count += 1
+        }, [Node.TYPE_TAG])
+        expect(count).to.be.equal(5)
+    })
+
+    it('should callback for each node and childnodes by type style and script', () => {
+        const node = Node.fromString(['<head>',
+            '<meta content="" name="description">',
+            '<style></style>',
+            '<script></script>',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'].join(''))
+
+        let count = 0
+        node.filterByType((el) => {
+            count += 1
+        }, [Node.TYPE_STYLE, Node.TYPE_SCRIPT])
+        expect(count).to.be.equal(2)
+    })
+
     it('returns children when callback returned true', () => {
         const node = Node.fromString(['<head>',
             '<meta content="" name="description">',
