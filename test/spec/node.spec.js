@@ -114,6 +114,20 @@ describe('Node', () => {
         expect(node.length).to.equal(3)
     })
 
+    it('returns the elements children wrapped as Nodes', () => {
+        const string = [
+            '<header>',
+            '<meta name="viewport" content="width=device-width, user-scalable=no">',
+            '<meta name="viewport" content="width=device-width, user-scalable=no">',
+            '<meta name="viewport" content="width=device-width, user-scalable=no">',
+            '</header>'
+        ].join('')
+        
+        const node = Node.fromString(string)
+        const children = node.children
+        expect(children).to.have.length(3)
+    })
+
     it('should have the correct tag name', () => {
         const string = '<meta name="viewport" content="width=device-width, user-scalable=no">'
         const node = Node.fromString(string)
