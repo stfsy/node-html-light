@@ -114,6 +114,21 @@ describe('Node', () => {
         expect(node.length).to.equal(3)
     })
 
+    it('returns the current DOMS root element', () => {
+        const string = [
+            '<header>',
+            '<meta name="viewport" content="width=device-width, user-scalable=no">',
+            '<meta name="viewport" content="width=device-width, user-scalable=no">',
+            '<meta name="viewport" content="width=device-width, user-scalable=no">',
+            '</header>'
+        ].join('')
+        
+        const node = Node.fromString(string)        
+        const meta = node.find('meta')[0]
+        const root = meta.root
+        expect(root.name).to.equal('header')
+    })
+
     it('returns the elements children wrapped as Nodes', () => {
         const string = [
             '<header>',
