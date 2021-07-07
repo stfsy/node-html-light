@@ -40,11 +40,6 @@ npm i node-html-light --save
 - static **fromPath**(path) -> [Document](#document)
 - static **fromString**(string) -> [Document](#document)
 
-#### Instance properties
-- name
-- parent
-- attributes
-
 #### Instance methods
 - **html**() -> [Node](#node)
 - **head**() -> [Node](#node)
@@ -59,7 +54,12 @@ npm i node-html-light --save
 
 #### Instance properties
 - name
+- type
 - parent
+- children
+- root
+- nextSibling
+- previousSibling
 - attributes
 
 #### Instance methods
