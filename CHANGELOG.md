@@ -1,3 +1,19 @@
+# [2.10.0](https://github.com/stfsy/node-html-light/compare/v2.9.0...v2.10.0) (2021-07-07)
+
+
+### Bug Fixes
+
+* self closing tags not recognized ([2d5ba56](https://github.com/stfsy/node-html-light/commit/2d5ba56ed2d0f3808908af45897f92bbc36324f5))
+
+
+### Features
+
+* add filter by type function ([c3e11a8](https://github.com/stfsy/node-html-light/commit/c3e11a860ffa335aabc0bcd38b8bc44e1fe55bfb))
+* add getter for root element ([acb9c31](https://github.com/stfsy/node-html-light/commit/acb9c31902ad433558693d0014d3381cd9b142de))
+* add method to get children of current node ([4c0538e](https://github.com/stfsy/node-html-light/commit/4c0538e081811944edb3afa3d0a1beb71fe9640f))
+
+
+
 # [2.9.0](https://github.com/stfsy/node-html-light/compare/v2.8.1...v2.9.0) (2021-07-06)
 
 
