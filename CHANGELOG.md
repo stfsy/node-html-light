@@ -1,3 +1,13 @@
+# [2.11.0](https://github.com/stfsy/node-html-light/compare/v2.10.0...v2.11.0) (2021-08-03)
+
+
+### Features
+
+* add setter for attributes ([6b2a16b](https://github.com/stfsy/node-html-light/commit/6b2a16b2dd96605250fdb051d0cba67a32c82a14))
+* update outdated dependencies ([cf6067b](https://github.com/stfsy/node-html-light/commit/cf6067b8450243a33a038e4536128d9da35d21c9))
+
+
+
 # [2.10.0](https://github.com/stfsy/node-html-light/compare/v2.9.0...v2.10.0) (2021-07-07)
 
 
