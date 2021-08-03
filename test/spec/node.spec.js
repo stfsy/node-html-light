@@ -122,8 +122,8 @@ describe('Node', () => {
             '<meta name="viewport" content="width=device-width, user-scalable=no">',
             '</header>'
         ].join('')
-        
-        const node = Node.fromString(string)        
+
+        const node = Node.fromString(string)
         const meta = node.find('meta')[0]
         const root = meta.root
         expect(root.name).to.equal('header')
@@ -137,7 +137,7 @@ describe('Node', () => {
             '<meta name="viewport" content="width=device-width, user-scalable=no">',
             '</header>'
         ].join('')
-        
+
         const node = Node.fromString(string)
         const children = node.children
         expect(children).to.have.length(3)
@@ -383,6 +383,27 @@ describe('Node', () => {
         ])[0]
 
         expect(node.attributes.name).to.equal('description')
+    })
+
+    it('should update all attributes', () => {
+        const string = [
+            '<head>',
+            '<meta content="" name="description" id="0815" abc="123">',
+            '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="#795548" name="theme-color">',
+            '<title></title>',
+            '</head>'
+        ].join('')
+
+        const node = Node.fromString(string).find('meta', [
+            new Attr('name', 'description')
+        ])[0]
+
+        node.attributes = { 1: 2, 3: 4 }
+
+        expect(Object.keys(node.attributes).length).to.equal(2)
+        expect(node.attributes[1]).to.equal(2)
+        expect(node.attributes[3]).to.equal(4)
     })
 
     it('should return the correct attributes of the meta node', () => {
