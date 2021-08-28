@@ -409,8 +409,8 @@ describe('Node', () => {
     it('should return the correct attributes of the meta node', () => {
         const string = [
             '<head>',
-            '<meta content="" name="description" id="0815" abc="123">',
             '<meta content="width=device-width,user-scalable=no" name="viewport">',
+            '<meta content="" name="description" id="0815" abc="123">',
             '<meta content="#795548" name="theme-color">',
             '<title></title>',
             '</head>'
