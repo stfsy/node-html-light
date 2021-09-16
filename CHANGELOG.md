@@ -1,3 +1,7 @@
+# [2.12.0](https://github.com/stfsy/node-html-light/compare/v2.11.0...v2.12.0) (2021-09-16)
+
+
+
 # [2.11.0](https://github.com/stfsy/node-html-light/compare/v2.10.0...v2.11.0) (2021-08-03)
 
 
