@@ -47,7 +47,7 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "chai-spies": "^1.0.0",
-    "conventional-changelog-cli": "^2.1.1",
+    "conventional-changelog-cli": "^2.2.2",
     "fs-promise": "^2.0.2",
     "jsdoc": "^3.6.7",
     "merge": "^2.1.1",
